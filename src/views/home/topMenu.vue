@@ -10,9 +10,9 @@
                             :fit="contain"></el-image>
                 </div>
             </el-menu-item>
+            <el-menu-item index="2" style="float: right;color: white" @click="$router.push('/homePage/userPersonCenter')">个人中心</el-menu-item>
+            <el-menu-item index="3" style="float: right;color: white" @click="$router.push('/homePage/list')">首页</el-menu-item>
 
-            <el-menu-item index="2" style="float: right;color: white" >首页</el-menu-item>
-            <el-menu-item index="3" style="float: right;color: white">个人中心</el-menu-item>
         </el-menu>
         <div class="content">
             <pageView></pageView>

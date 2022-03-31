@@ -1,6 +1,6 @@
 <template>
     <div class="signUp">
-        <el-card shadow="always" class="box-card">
+        <el-card shadow="always" class="box-card" style="background: #babcbe">
             <div class="username-input" style="margin: 10vw">
                 <h1>注册页面</h1>
                 <el-input placeholder="用户名" style="margin: 1vh" v-model="loginData.account"></el-input>
