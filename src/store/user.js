@@ -7,9 +7,9 @@ const user={
         isLogin:false,
         account:null,
         id:null,
-        phone:null,
-        position:null,
-        realname:null,
+        // phone:null,
+        // position:null,
+        // realname:null,
         type:null,
         token:null,
     },
@@ -23,18 +23,18 @@ const user={
         id:(state)=>{
             return state.id
         },
-        phone:(state)=>{
-            return state.phone
-        },
-        position:(state)=>{
-            return state.position
-        },
+        // phone:(state)=>{
+        //     return state.phone
+        // },
+        // position:(state)=>{
+        //     return state.position
+        // },
         type:(state)=>{
             return state.type
         },
-        realname:(state)=>{
-            return state.realname
-        },
+        // realname:(state)=>{
+        //     return state.realname
+        // },
         token: (state) => {
             if (state.token == null) {
                 let sessionToken = sessionStorage.getItem('token')
@@ -69,15 +69,15 @@ const user={
         SET_ACCOUNT: (state,account) =>{
             state.account=account;
         },
-        SET_PHONE: (state,phone) =>{
-            state.phone=phone;
-        },
-        SET_POSITION: (state,position) =>{
-            state.position=position;
-        },
-        SET_REALNAME: (state,realname) =>{
-            state.realname=realname;
-        },
+        // SET_PHONE: (state,phone) =>{
+        //     state.phone=phone;
+        // },
+        // SET_POSITION: (state,position) =>{
+        //     state.position=position;
+        // },
+        // SET_REALNAME: (state,realname) =>{
+        //     state.realname=realname;
+        // },
         SET_TYPE: (state,type) =>{
             state.type=type;
         },
@@ -92,9 +92,9 @@ const user={
             // sessionStorage.removeItem('user')
             state.type=null
             state.id=null
-            state.realname=null
-            state.phone=null
-            state.position=null
+            // state.realname=null
+            // state.phone=null
+            // state.position=null
             state.account=null
             state.token=null
             state.isLogin=false
@@ -114,9 +114,9 @@ const user={
                     commit("SET_ID",data.id)
                     commit("SET_ACCOUNT",data.account)
                     sessionStorage.setItem("account",data.account)
-                    commit("SET_PHONE",data.phone)
-                    commit("SET_POSITION",data.position)
-                    commit("SET_REALNAME",data.realname)
+                    // commit("SET_PHONE",data.phone)
+                    // commit("SET_POSITION",data.position)
+                    // commit("SET_REALNAME",data.realname)
                     commit("SET_TYPE",data.type)
                     resolve(resp)
                 }).catch(error =>{
