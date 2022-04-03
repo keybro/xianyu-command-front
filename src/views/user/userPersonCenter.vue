@@ -2,7 +2,7 @@
     <div class="user-person-center" style="width: 100%;margin-top: 3vh;text-align: center">
 
         <el-row style="margin-top: 8px">
-            <el-col :span="6"><div class="grid-content bg-purple" style="background: black"></div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
             <!-- 个人中心主体部分-->
             <el-col :span="12">
                 <!--   头像和用户名             -->
@@ -72,7 +72,7 @@
 
             </el-col>
 
-            <el-col :span="6"><div class="grid-content bg-purple" style="background: black"></div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
         </el-row>
 
     </div>

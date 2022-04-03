@@ -13,13 +13,13 @@
             <el-row>
                 <!--      图书左块          -->
                 <el-col :span="4" style="text-align: center">
-                    <h2 style="margin-top: 30%">书籍</h2>
+                    <h2 style="margin-top: 40%">书籍</h2>
                     <p style="margin-top: 10%">分类</p>
-                    <p style="margin-top: 3%">总榜top100</p>
+<!--                    <p style="margin-top: 3%">总榜top100</p>-->
                 </el-col>
 
                 <div>
-                    <h4>最新上架</h4>
+                    <h4>总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
@@ -45,13 +45,13 @@
             <el-row>
                 <!--      图书左块          -->
                 <el-col :span="4" style="text-align: center">
-                    <h2 style="margin-top: 30%">电影</h2>
+                    <h2 style="margin-top: 40%">电影</h2>
                     <p style="margin-top: 10%">分类</p>
-                    <p style="margin-top: 3%">总榜top100</p>
+<!--                    <p style="margin-top: 3%">总榜top100</p>-->
                 </el-col>
 
                 <div>
-                    <h4>最新上架</h4>
+                    <h4>总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
@@ -78,13 +78,13 @@
             <el-row>
                 <!--      图书左块          -->
                 <el-col :span="4" style="text-align: center">
-                    <h2 style="margin-top: 30%">音乐</h2>
+                    <h2 style="margin-top: 40%">音乐</h2>
                     <p style="margin-top: 10%">分类</p>
-                    <p style="margin-top: 3%">总榜top100</p>
+<!--                    <p style="margin-top: 3%">总榜top100</p>-->
                 </el-col>
 
                 <div>
-                    <h4>最新上架</h4>
+                    <h4>总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
