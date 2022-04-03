@@ -6,6 +6,8 @@ import topMenu from "../views/home/topMenu";
 import userMainPage from "../views/user/userMainPage";
 import userPersonCenter from "../views/user/userPersonCenter";
 import detail from "../views/user/detail";
+import groupDetail from "../views/group/groupDetail";
+import searchPage from "../views/user/searchPage";
 Vue.use(VueRouter)
 
 const routes = [
@@ -15,7 +17,9 @@ const routes = [
         children:[
             {path:"list",component:userMainPage},
             {path: "userPersonCenter",component: userPersonCenter},
-            {path: "detail",component: detail}
+            {path: "detail",component: detail},
+            {path: "groupDetail",component: groupDetail},
+            {path: "searchPage",component: searchPage},
         ]
     }
 ]
