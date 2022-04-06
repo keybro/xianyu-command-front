@@ -22,15 +22,13 @@
                     <h4>总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
-                        <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }">
-                                <img src="http://47.99.186.220:9000/recommend/book/goldTime.jpg?Content-Disposition=attachment%3B%20filename%3D%22book%2FgoldTime.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T023512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=459b87d99862a2ab0ce3c938c3f8e55986350149347fe80a79cc18994d8a6a65" class="image" style="width: 100%;height: 30vh">
+                        <el-col :span="4" v-for="(item, index) in mainPageBookList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                            <el-card :body-style="{ padding: '0px' }" style="height: 45vh">
+                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh"  @click="showDetail(item)">
                                 <div style="padding: 14px;">
-                                    <span>《镀金时代》</span>
+                                    <span>{{item.bookName}}</span>
                                     <div class="bottom clearfix">
-<!--                                        <time class="time">{{ currentDate }}</time>-->
-                                        作者：夏清影
-                                        <el-button type="text" class="button">操作按钮</el-button>
+                                        作者：<span>{{item.author}}</span>
                                     </div>
                                 </div>
                             </el-card>
@@ -54,14 +52,14 @@
                     <h4>总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
-                        <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }">
-                                <img src="http://47.99.186.220:9000/recommend/movie/movie1.webp?Content-Disposition=attachment%3B%20filename%3D%22movie%2Fmovie1.webp%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T024751Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2358888ff768a4e7818391e446b6770d734a76593c924c68b973969722210e91" class="image" style="width: 100%;height: 30vh">
+                        <el-col :span="4" v-for="(item, index) in mainPageMovieList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                            <el-card :body-style="{ padding: '0px' }" style="height: 45vh">
+                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh">
                                 <div style="padding: 14px;">
-                                    <span>《阿拉丁》</span>
+                                    <span>{{item.movieName}}</span>
                                     <div class="bottom clearfix">
-                                        导演:盖·里奇
-                                        <el-button type="text" class="button">操作按钮</el-button>
+                                        导演:<span>{{item.director}}</span>
+<!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
                                     </div>
                                 </div>
                             </el-card>
@@ -86,15 +84,15 @@
                 <div>
                     <h4>总榜top100...(更多)</h4>
                     <el-row>
-                        <!--      图书右块          -->
-                        <el-col :span="4" v-for="(o, index) in 5" :key="o" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }">
-                                <img src="http://47.99.186.220:9000/recommend/music/i%20am%20fine.jpg?Content-Disposition=attachment%3B%20filename%3D%22music%2Fi%20am%20fine.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T024211Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=68bd814aaa8a3d67958a71cf75a008003f43aba16515ac11cd4af9976b070180" class="image" style="width: 100%;height: 30vh">
+                        <!--      音乐右块          -->
+                        <el-col :span="4" v-for="(item, index) in mainPageMusicList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                            <el-card :body-style="{ padding: '0px' }" style="height: 45vh">
+                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh">
                                 <div style="padding: 14px;">
-                                    <span>《我好吗?》</span>
+                                    <span>{{item.musicName}}</span>
                                     <div class="bottom clearfix">
-                                        歌手:梁静茹
-                                        <el-button type="text" class="button">操作按钮</el-button>
+                                        歌手:<span>{{item.performer}}</span>
+<!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
                                     </div>
                                 </div>
                             </el-card>
@@ -124,14 +122,6 @@
                             <!--      图书右块          -->
                             <el-col :span="4" v-for="(o, index) in 6" :key="o" :offset="index > 0 ? 6 : 0" style="margin-left: 0px;padding: 8px;">
                                 <el-card :body-style="{ padding: '0px' }">
-<!--                                    <img src="http://47.99.186.220:9000/recommend/book/goldTime.jpg?Content-Disposition=attachment%3B%20filename%3D%22book%2FgoldTime.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T023512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=459b87d99862a2ab0ce3c938c3f8e55986350149347fe80a79cc18994d8a6a65" class="image" style="width: 30%;height: 10vh;margin-right: 0px">-->
-<!--                                    <div style="padding: 14px;">-->
-<!--                                        <span>好吃的汉堡</span>-->
-<!--                                        <div class="bottom clearfix">-->
-<!--                                            <time class="time">{{ currentDate }}</time>-->
-<!--                                            <el-button type="text" class="button">操作按钮</el-button>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
                                     <div style="float: left">
                                         <img src="http://47.99.186.220:9000/recommend/book/goldTime.jpg?Content-Disposition=attachment%3B%20filename%3D%22book%2FgoldTime.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T023512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=459b87d99862a2ab0ce3c938c3f8e55986350149347fe80a79cc18994d8a6a65" class="image" style="width:5vw;height: 10vh;margin-right: 0px">
 
@@ -180,13 +170,48 @@
 </template>
 
 <script>
+
+    import {getUserMainPageBook} from "../../api/book";
+    import {getUserMainPageMovie} from "../../api/movie";
+    import {getUserMainPageMusic} from "../../api/music";
+
     export default {
         name: "userMainPage",
         data:function () {
             return{
                 input:'',
-                currentDate: new Date()
+                currentDate: new Date(),
+                mainPageBookList:[{}],
+                mainPageMovieList:[{}],
+                mainPageMusicList:[{}],
+                clickBookDetail:{},
             }
+        },
+        methods:{
+            showDetail(data){
+                console.log("点击了")
+                console.log(data)
+                this.$router.push('/homePage/detail')
+                this.clickBookDetail = data;
+                console.log(this.clickBookDetail)
+                //将点击的图书id传入浏览器，方便详情页获取
+                sessionStorage.setItem("detailId",data.bookId);
+                //存储点击详情的id，1表示是图书
+                sessionStorage.setItem("detailType",1)
+            }
+        },
+        created() {
+            getUserMainPageBook().then(resp =>{
+                this.mainPageBookList = resp.data.data;
+                console.log(this.mainPageBookList)
+            })
+            getUserMainPageMovie().then(resp =>{
+                this.mainPageMovieList = resp.data.data;
+            })
+            getUserMainPageMusic().then(resp =>{
+                this.mainPageMusicList = resp.data.data;
+            })
+
         }
     }
 </script>
