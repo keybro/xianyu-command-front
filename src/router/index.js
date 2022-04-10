@@ -8,6 +8,9 @@ import userPersonCenter from "../views/user/userPersonCenter";
 import detail from "../views/user/detail";
 import groupDetail from "../views/group/groupDetail";
 import searchPage from "../views/user/searchPage";
+import bookClassify from "../views/classify/bookClassify";
+import movieClassify from "../views/classify/movieClassify";
+import musicClassify from "../views/classify/musicClassify";
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +23,9 @@ const routes = [
             {path: "detail",component: detail},
             {path: "groupDetail",component: groupDetail},
             {path: "searchPage",component: searchPage},
+            {path: "classifyOfBook",component: bookClassify},
+            {path: "classifyOfMovie",component: movieClassify},
+            {path: "classifyOfMusic",component: musicClassify}
         ]
     }
 ]

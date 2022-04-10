@@ -23,3 +23,29 @@ export  function  getBookDetailById(id){
         method:"get",
     })
 }
+
+/**
+ * 根据当前页面推荐5个同类型的书籍
+ * @param id
+ * @returns {AxiosPromise}
+ */
+export  function  getBookRecommendById(id){
+    return request({
+        url:`book/getBookRecommendList/${id}`,
+        method:"get",
+    })
+}
+
+/**
+ * 根据传入的类型分页获取书本
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  pageGetBookByType(params){
+    return request({
+        url:`book/getBookListByType`,
+        method:"get",
+        params: params
+    })
+}
+

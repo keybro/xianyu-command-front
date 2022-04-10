@@ -4,7 +4,7 @@
             <div class="username-input" style="margin: 10vw">
                 <h1>登录页面</h1>
                 <el-input placeholder="用户名" style="margin: 1vh" v-model="userData.account"></el-input>
-                <el-input  placeholder="密码" style="margin: 1vh;" v-model="userData.password"></el-input>
+                <el-input  placeholder="密码" style="margin: 1vh;" v-model="userData.password" show-password></el-input>
                 <div class="auth">
                     <el-input  placeholder="验证码" style="margin: 1vh; width: 45%" v-model="authCode"></el-input>
                     <!--      图片验证码          -->
