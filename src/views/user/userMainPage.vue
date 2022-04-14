@@ -20,7 +20,7 @@
                 </el-col>
 
                 <el-col :span="19" style="text-align: center">
-                    <h4>总榜top100...(更多)</h4>
+                    <h4 style="text-align: left">总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageBookList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
@@ -50,7 +50,7 @@
                 </el-col>
 
                 <el-col :span="19" style="text-align: center">
-                    <h4>总榜top100...(更多)</h4>
+                    <h4 style="text-align: left">总榜top100...(更多)</h4>
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageMovieList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
@@ -83,7 +83,7 @@
                 </el-col>
 
                 <el-col :span="19" style="text-align: center">
-                    <h4>总榜top100...(更多)</h4>
+                    <h4 style="text-align: left">总榜top100...(更多)</h4>
                     <el-row>
                         <!--      音乐右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageMusicList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
@@ -111,8 +111,9 @@
                 <!--      图书左块          -->
                 <el-col :span="4" style="text-align: center">
                     <h2 style="margin-top: 15%">小组</h2>
-                    <p style="margin-top: 10%">分类</p>
-                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="dialogTableVisible = true">申请创建小组</el-button>
+                    <div> <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toGroupClassify()">分类</el-button></div>
+
+                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="tocreateGroup()">申请创建小组</el-button>
                 </el-col>
 
 
@@ -120,33 +121,18 @@
                     <div>
                         <h4>热门小组</h4>
                         <el-row>
-                            <!--      图书右块          -->
-                            <el-col :span="4" v-for="(o, index) in 6" :key="o" :offset="index > 0 ? 6 : 0" style="margin-left: 0px;padding: 8px;">
+                            <!--      小组第一行          -->
+                            <el-col :span="4" v-for="(item) in groupInfoList" :key="item" style="margin-left: 0px;padding: 8px;">
                                 <el-card :body-style="{ padding: '0px' }">
                                     <div style="float: left">
-                                        <img src="http://47.99.186.220:9000/recommend/book/goldTime.jpg?Content-Disposition=attachment%3B%20filename%3D%22book%2FgoldTime.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T023512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=459b87d99862a2ab0ce3c938c3f8e55986350149347fe80a79cc18994d8a6a65" class="image" style="width:5vw;height: 10vh;margin-right: 0px">
+                                        <img :src="item.groupHead" class="image" style="width:5vw;height: 10vh;margin-right: 0px" @click="gotoGroupDetail(item)">
 
                                     </div>
-                                    <div style="float: right;margin-right: 10%;margin-top: 10%">
-                                        <P>第一小组</P>
+                                    <div style="float: right;margin-right: 10%;margin-top: 10%;width: 6vw">
+                                        <p class="group-name">{{item.groupName}}</p>
                                         <P style="margin-top: 2%">1989 人</P>
                                     </div>
 
-                                </el-card>
-                            </el-col>
-                        </el-row>
-                        <el-row>
-                            <!--      图书右块          -->
-                            <el-col :span="4" v-for="(o, index) in 6" :key="o" :offset="index > 0 ? 6 : 0" style="margin-left: 0px;padding: 8px;">
-                                <el-card :body-style="{ padding: '0px' }">
-                                    <div style="float: left">
-                                        <img src="http://47.99.186.220:9000/recommend/book/goldTime.jpg?Content-Disposition=attachment%3B%20filename%3D%22book%2FgoldTime.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220331%2F%2Fs3%2Faws4_request&X-Amz-Date=20220331T023512Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=459b87d99862a2ab0ce3c938c3f8e55986350149347fe80a79cc18994d8a6a65" class="image" style="width:5vw;height: 10vh;margin-right: 0px">
-
-                                    </div>
-                                    <div style="float: right;margin-right: 10%;margin-top: 10%">
-                                        <P>第一小组</P>
-                                        <P style="margin-top: 2%">1989 人</P>
-                                    </div>
                                 </el-card>
                             </el-col>
                         </el-row>
@@ -184,6 +170,7 @@
                                 multiple
                                 filterable
                                 allow-create
+                                collapse-tags
                                 default-first-option
                                 placeholder="请选择文章标签"
                                 style="width: 60%;margin-left: 1%"
@@ -206,13 +193,14 @@
                                 :show-file-list="false"
                                 :on-success="handleAvatarSuccess"
                                 :before-upload="beforeAvatarUpload"
-                                v-if="this.groupImgUploadVisible == true"
-                                style="border: 1px #e6e6e6 solid;margin-left: 3%;border-radius: 5px"
+                                v-if="groupImgUploadVisible == true"
+                                list-type="picture-card"
+                                style="border: 1px #e6e6e6 solid;margin-left: 3%;border-radius: 5px;"
                         >
                             <i class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
 
-                        <img src="https://img9.doubanio.com/view/subject/s/public/s33821754.jpg" alt="" style="width: 50%;height: 20vh" v-if="this.groupImgUploadVisible == false">
+                        <img :src="uploadImgURL" alt="" style="width: 50%;height: 20vh" v-if="uploadImgURL!=''">
                     </div>
 
                     <!--          输入小组描述          -->
@@ -228,16 +216,17 @@
                         </el-input>
                     </div>
 
+                    <div class="makesure-button">
+                        <el-button type="primary" size="medium" @click="makeSureUpload()">确定</el-button>
+
+                    </div>
+
 
                 </el-col>
                 <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
             </el-row>
 
         </el-dialog>
-
-
-
-
 
 
     </div>
@@ -248,6 +237,8 @@
     import {getUserMainPageBook} from "../../api/book";
     import {getUserMainPageMovie} from "../../api/movie";
     import {getUserMainPageMusic} from "../../api/music";
+    import {uploadGroupImg} from "../../api/minio";
+    import {getImgURLByName,createGroup,getUserMainPageGroups} from "../../api/group";
 
     export default {
         name: "userMainPage",
@@ -260,26 +251,80 @@
                 mainPageMovieList:[{}],
                 mainPageMusicList:[{}],
                 clickBookDetail:{},
-                options: [{
-                    value: 'HTML',
-                    label: 'HTML'
+                options: [
+                    {
+                    value: '影视',
+                    label: '影视'
                 }, {
-                    value: 'CSS',
-                    label: 'CSS'
+                    value: '音乐',
+                    label: '音乐'
                 }, {
-                    value: 'JavaScript',
-                    label: 'JavaScript'
-                }],
+                    value: '文学',
+                    label: '文学'
+                },{
+                    value: '运动',
+                    label: '运动'
+                },{
+                    value: '美食',
+                    label: '美食'
+                },{
+                    value: '公益',
+                    label: '公益'
+                },{
+                    value: '家庭',
+                    label: '家庭'
+                },{
+                    value: '购物',
+                    label: '购物'
+                },{
+                    value: '求职',
+                    label: '求职'
+                },{
+                    value: '考试',
+                    label: '考试'
+                },{
+                    value: '艺术',
+                    label: '艺术'
+                },{
+                    value: '美术',
+                    label: '美术'
+                },{
+                    value: '情感',
+                    label: '情感'
+                },{
+                    value: '闲聊',
+                    label: '闲聊'
+                }
+                ],
                 value: [],
                 dialogImageUrl: '',
                 dialogVisible: false,
                 groupImgUploadVisible: true,
                 imageUrl: '',
-                groupDescription:""
+                groupDescription:"",
+                uploadFileImgFile:'',
+                //创建小组的表单
+                createGroup:{
+                    groupName:"",
+                    groupIntroduction:"",
+                    label:"",
+                    headImgName:"",
+                    groupHead:""
+                },
+                //小组信息列表
+                groupInfoList:[{}],
+                groupInfoListFirstLine:[{}],
+                groupInfoListSecondLine:[{}],
+                uploadImgURL:""
 
             }
         },
         methods:{
+            tocreateGroup(){
+                console.log(this.groupImgUploadVisible)
+                this.dialogTableVisible = true
+                this.groupImgUploadVisible = true
+            },
             //点击书籍时跳转到书籍详情页
             showDetail(data){
                 console.log("点击了")
@@ -331,11 +376,70 @@
                 }
                 return isJPG && isLt2M;
             },
-            uploadFile(item){
-                console.log(item)
+            uploadFile(obj){
                 this.groupImgUploadVisible = false;
-                console.log(this.groupImgUploadVisible)
+                this.uploadFileImgFile = obj
+                console.log("执行了上传方法")
+                console.log(obj["file"])
+                console.log(obj)
+                let fd = new FormData();
+                console.log(obj.file.name)
+                fd.append("file",obj["file"]);
+                fd.append("name",obj.file.name);
+                let params ={}
+                this.$set(params,"name",obj.file.name)
+                this.createGroup.headImgName = obj.file.name;
+                getImgURLByName(params).then(resp =>{
+                    this.uploadImgURL = resp.data.data;
+                    console.log(this.uploadImgURL)
+                })
+                console.log("fd",fd)
+                uploadGroupImg(fd).then(()=>{
+                    this.$message({
+                        message: '上传成功!',
+                        type: 'success'
+                    });
+                })
+            },
+            //底部的确定上传按钮
+            makeSureUpload(){
+                this.createGroup.groupName = this.input;
+                this.createGroup.groupIntroduction = this.groupDescription;
+                for (let i = 0; i < this.value.length; i++) {
+                    this.createGroup.label+=this.value[i]+"/";
+                }
+                // console.log(this.createGroup.label)
+                // this.createGroup.label = this.value;
+                // console.log(this.value)
+                this.createGroup.groupHead = this.uploadImgURL;
+                // console.log(this.createGroup)
+                createGroup(this.createGroup).then(()=>{
+                    this.$message({
+                        message: '上传成功!',
+                        type: 'success'
+                    });
+                })
+                //使URL变为空，下次上传图片的时候不显示图片
+                this.uploadImgURL = ""
+                //关闭创建小组的弹窗
+                this.dialogTableVisible = false;
+                //创建小组数据列表初始化
+                this.createGroup.groupName = "";
+                this.createGroup.groupIntroduction = "";
+                this.createGroup.label = "";
+                this.headImgName="";
+                this.groupHead='';
+                this.input = '';
+                this.value='';
+                this.groupDescription = '';
+                //使得第二次打开能有图片上传的组件
+            },
+            //点击跳转到小组详情页面
+            gotoGroupDetail(data){
+                this.$router.push("/homePage/groupDetail")
+                sessionStorage.setItem("groupId",data.groupId);
             }
+
         },
         created() {
             getUserMainPageBook().then(resp =>{
@@ -347,6 +451,10 @@
             })
             getUserMainPageMusic().then(resp =>{
                 this.mainPageMusicList = resp.data.data;
+            })
+
+            getUserMainPageGroups().then(resp =>{
+                this.groupInfoList = resp.data.data
             })
 
         }
@@ -422,6 +530,16 @@
 
     .disabled el-upload el-upload--picture-card {
         display: none;
+    }
+
+    .group-name{
+        /*width: 300px;*/
+        /* 规定当内容溢出元素框（容器）时隐藏 */
+        overflow: hidden;
+        /* 规定当文本溢出包含元素（容器）出现省略号 */
+        text-overflow: ellipsis;
+        /* 规定段落中的文本不进行换行 */
+        white-space: nowrap;
     }
 
 

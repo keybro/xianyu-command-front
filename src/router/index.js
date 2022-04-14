@@ -11,6 +11,8 @@ import searchPage from "../views/user/searchPage";
 import bookClassify from "../views/classify/bookClassify";
 import movieClassify from "../views/classify/movieClassify";
 import musicClassify from "../views/classify/musicClassify";
+import groupClassify from "../views/classify/groupClassify";
+import invitationDetail from "../views/invitation/invitationDetail";
 Vue.use(VueRouter)
 
 const routes = [
@@ -25,7 +27,9 @@ const routes = [
             {path: "searchPage",component: searchPage},
             {path: "classifyOfBook",component: bookClassify},
             {path: "classifyOfMovie",component: movieClassify},
-            {path: "classifyOfMusic",component: musicClassify}
+            {path: "classifyOfMusic",component: musicClassify},
+            {path: "classifyOfGroup",component: groupClassify},
+            {path: "invitationDetail",component: invitationDetail}
         ]
     }
 ]

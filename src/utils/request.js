@@ -3,7 +3,7 @@
 import axios from 'axios';
 import router from '../router';
 // import {Message} from 'element-ui'
-import {isTokenExist,getToken} from "./auth";
+import {isTokenExist,getToken,isUploadImg} from "./auth";
 
 const service = axios.create({
     //请求路径的前面被加上/api
@@ -16,6 +16,11 @@ service.interceptors.request.use(config=>{
         //让每一次请求携带token
         // console.log(getToken())
         config.headers['token']=getToken();
+    }
+    if (isUploadImg()){
+        config.headers['Content-Type']='multipart/form-data'
+        console.log("请求头")
+        console.log(config.headers['Content-Type'])
     }
     return config;
 },error=>{

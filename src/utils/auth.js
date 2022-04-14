@@ -18,3 +18,10 @@ export function isTokenExist() {
         return false;
     }
 }
+
+export function isUploadImg() {
+    console.log("条件判断")
+    console.log(sessionStorage.getItem("isUpload")==1)
+    return sessionStorage.getItem("isUpload")==1
+
+}
