@@ -7,12 +7,12 @@ import userMainPage from "../views/user/userMainPage";
 import userPersonCenter from "../views/user/userPersonCenter";
 import detail from "../views/user/detail";
 import groupDetail from "../views/group/groupDetail";
-import searchPage from "../views/user/searchPage";
 import bookClassify from "../views/classify/bookClassify";
 import movieClassify from "../views/classify/movieClassify";
 import musicClassify from "../views/classify/musicClassify";
 import groupClassify from "../views/classify/groupClassify";
 import invitationDetail from "../views/invitation/invitationDetail";
+import searchPage from "../views/search/searchPage"
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,7 +29,8 @@ const routes = [
             {path: "classifyOfMovie",component: movieClassify},
             {path: "classifyOfMusic",component: musicClassify},
             {path: "classifyOfGroup",component: groupClassify},
-            {path: "invitationDetail",component: invitationDetail}
+            {path: "invitationDetail",component: invitationDetail},
+            {path: "searchPage",component: searchPage}
         ]
     }
 ]

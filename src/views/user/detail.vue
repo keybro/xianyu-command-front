@@ -95,7 +95,7 @@
                </el-row>
 
 
-                <el-row>
+                <el-row style="margin-bottom: 10px">
                     <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
                     <!--         作品的简介内容           -->
                     <el-col :span="22">
@@ -135,9 +135,9 @@
                             <!--         喜欢推荐标题           -->
                             <el-col :span="4" v-for="(item, index) in bookRecommendList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px">
                                 <img :src="item.coverImg" alt="" style="width: 80%;height: 25vh" @click="clickBookRecommend(item.bookId)" >
-                                <div>
-                                    <p style="margin-left: 23%">《{{item.bookName}}》</p>
-                                </div>
+
+                                    <p>《{{item.bookName}}》</p>
+
                             </el-col>
                             <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
                         </el-row>
@@ -221,7 +221,6 @@
                 <el-col :span="22">
                     <div class="grid-content bg-purple-light" style="text-align: left">
                         <div class="left">
-                            <el-button type="text">热门</el-button>
                             <el-button type="text" >最新</el-button>
                         </div>
 
@@ -621,7 +620,7 @@
     }
 
     .introduction{
-        height: 15vh;
+        /*height: 15vh;*/
         border-bottom: #e6e6e6 1px solid;
 
     }

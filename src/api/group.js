@@ -73,9 +73,22 @@ export  function  getGroupRecommendById(id){
  * @param params
  * @returns {AxiosPromise}
  */
-export  function  pageGetGroupByType(params){
+export  function pageGetGroupByType(params){
     return request({
         url:`group/getGroupListByType`,
+        method:"get",
+        params: params
+    })
+}
+
+/**
+ * 根据传入的类型分页获取小组
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function getSearchGroup(params){
+    return request({
+        url:`/group/getSearchGroup`,
         method:"get",
         params: params
     })

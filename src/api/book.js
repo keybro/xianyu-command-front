@@ -49,3 +49,18 @@ export  function  pageGetBookByType(params){
     })
 }
 
+
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getSearchBook(params){
+    return request({
+        url:`book/getSearchBook`,
+        method:"get",
+        params: params
+    })
+}
+

@@ -49,3 +49,17 @@ export  function  pageGetMusicByType(params){
         params: params
     })
 }
+
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getSearchMusic(params){
+    return request({
+        url:`music/getSearchMusic`,
+        method:"get",
+        params: params
+    })
+}

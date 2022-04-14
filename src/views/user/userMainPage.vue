@@ -1,8 +1,8 @@
 <template>
     <div class="user-main-page" style="width: 100%;margin-top: 3vh;">
         <div class="search" style="text-align: center;margin-right: 0px">
-            <el-input placeholder="请输入内容" v-model="input" class="input-with-select" style="width: 20%">
-                <el-button slot="append" icon="el-icon-search"></el-button>
+            <el-input placeholder="请输入搜索内容" v-model="input" class="input-with-select" style="width: 20%">
+                <el-button slot="append" icon="el-icon-search" @click="gotoSearchPage()"></el-button>
             </el-input>
         </div>
 
@@ -24,12 +24,12 @@
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageBookList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="height: 45vh;">
+                            <el-card :body-style="{ padding: '0px' }" style="height: 50vh;">
                                 <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showDetail(item)">
                                 <div style="padding: 14px;">
                                     <span>{{item.bookName}}</span>
                                     <div class="bottom clearfix">
-                                        作者：<span>{{item.author}}</span>
+                                        作者：<span class="secondLine">{{item.author}}</span>
                                     </div>
                                 </div>
                             </el-card>
@@ -54,12 +54,12 @@
                     <el-row>
                         <!--      图书右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageMovieList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 45vh">
+                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
                                 <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showMovieDetail(item)">
                                 <div style="padding: 14px;">
                                     <span>{{item.movieName}}</span>
                                     <div class="bottom clearfix">
-                                        导演:<span>{{item.director}}</span>
+                                        导演:<span class="secondLine">{{item.director}}</span>
 <!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
                                     </div>
                                 </div>
@@ -87,10 +87,10 @@
                     <el-row>
                         <!--      音乐右块          -->
                         <el-col :span="4" v-for="(item, index) in mainPageMusicList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 45vh">
+                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
                                 <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showMusicDetail(item)">
                                 <div style="padding: 14px;">
-                                    <span>{{item.musicName}}</span>
+                                    <span class="secondLine">{{item.musicName}}</span>
                                     <div class="bottom clearfix">
                                         歌手:<span>{{item.performer}}</span>
 <!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
@@ -438,6 +438,11 @@
             gotoGroupDetail(data){
                 this.$router.push("/homePage/groupDetail")
                 sessionStorage.setItem("groupId",data.groupId);
+            },
+            //搜索页面调用的方法，将关键字存入浏览器中
+            gotoSearchPage(){
+                sessionStorage.setItem("keyword",this.input);
+                this.$router.push("/homePage/searchPage")
             }
 
         },
@@ -542,5 +547,13 @@
         white-space: nowrap;
     }
 
+    /*帖子的详细信息中帖子内容的换行显示css*/
+    .secondLine{
+        width: 100%;
+        font-size: medium;
+        word-break: break-all;
+        overflow: auto;
+        white-space: normal;
+    }
 
 </style>

@@ -50,3 +50,17 @@ export  function  pageGetMovieByType(params){
         params: params
     })
 }
+
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getSearchMovie(params){
+    return request({
+        url:`/movie/getSearchMovie`,
+        method:"get",
+        params: params
+    })
+}
