@@ -33,5 +33,4 @@ export function helloWorld() {
         url:'/',
         method:'get'
     })
-
 }

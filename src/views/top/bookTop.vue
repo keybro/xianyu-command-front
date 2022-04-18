@@ -1,5 +1,5 @@
 <template>
-    <div class="movie-classify">
+    <div class="book-top">
         <el-row>
             <el-col :span="2">
                 <div class="grid-content bg-purple"></div>
@@ -14,52 +14,27 @@
                         <el-col :span="16">
                             <div style="text-align: left;border-left: 1px #e6e6e6 solid;border-right: 1px #e6e6e6 solid;border-top: 1px #e6e6e6 solid">
                                 <div class="title" style="margin-top: 8px">
-                                    <h4 style="margin-left: 10px">选择电影</h4>
+                                    <h4 style="margin-left: 10px">书籍top100</h4>
                                 </div>
                                 <div style="display: flex;margin-top: 10px">
-                                    <p style="margin-left: 10px;margin-left: 10px;margin-top: 5px">电影类型:</p>
-                                    <div style="margin-top: 20px;margin: 0px;margin-right: 0px;margin-left: 10px">
-                                        <el-radio-group v-model="radio2" size="small" @change="getListByType()"
-                                                        style="width: 100%">
-                                            <el-radio-button label="全部"></el-radio-button>
-                                            <el-radio-button label="剧情"></el-radio-button>
-                                            <el-radio-button label="动作"></el-radio-button>
-                                            <el-radio-button label="历史"></el-radio-button>
-                                            <el-radio-button label="战争"></el-radio-button>
-                                            <el-radio-button label="科幻"></el-radio-button>
-                                            <el-radio-button label="冒险"></el-radio-button>
-                                            <el-radio-button label="爱情"></el-radio-button>
-                                            <el-radio-button label="喜剧"></el-radio-button>
-                                            <el-radio-button label="灾难"></el-radio-button>
-                                            <el-radio-button label="犯罪"></el-radio-button>
-                                            <el-radio-button label="动画"></el-radio-button>
-                                            <el-radio-button label="惊悚"></el-radio-button>
-                                            <el-radio-button label="家庭"></el-radio-button>
-                                            <el-radio-button label="运动"></el-radio-button>
-                                            <el-radio-button label="悬疑"></el-radio-button>
-                                        </el-radio-group>
-                                    </div>
 
                                 </div>
-
-
                                 <!--           书籍列表            -->
                                 <div style="width: 100%;border-top: 1px #e6e6e6 solid;margin-top: 10px;border-right: 1px #e6e6e6 solid">
                                     <!--                 每个图书div                   -->
                                     <div class="content-list-div"
                                          style="margin-top: 10px;border-bottom: 1px #e6e6e6 solid;display: flex"
-                                         v-for="(item, index) in movieList" :key="item" :offset="index > 0 ? 10 : 0">
+                                         v-for="(item, index) in bookList" :key="item" :offset="index > 0 ? 10 : 0">
                                         <img :src="item.coverImg" alt=""
                                              style="width: 15%;height: 20vh; margin-left: 30px;margin-bottom: 10px"
-                                             @click="goToMovieDetail(item)">
+                                             @click="goToBookDetail(item)">
                                         <div class="img-right-content" style="margin-top: 1vh;margin-left: 20px">
-                                            <h4>{{item.movieName}}</h4>
-                                            <p style="margin-top: 10px">导演：{{item.director}}</p>
-                                            <p style="margin-top: 10px">类型:{{item.movieType}}</p>
-                                            <p style="margin-top: 10px">上映时间:{{item.showTime}}</p>
-                                            <p style="margin-top: 10px">片长:{{item.movieLong}}</p>
+                                            <h4>{{item.bookName}}</h4>
+                                            <p style="margin-top: 10px">作者：{{item.author}}</p>
+                                            <p style="margin-top: 10px">出版社:{{item.publish}}</p>
+                                            <p style="margin-top: 10px">出版时间:{{item.publishTime}}</p>
                                             <div style="width: 30vw;margin-top: 10px">
-                                                <p class="detail-hidden">主演:{{item.actor}}</p>
+                                                <p class="detail-hidden">简介:{{item.bookIntroduce}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +75,6 @@
                                         <p style="margin-top: 10px">我的音乐评论:{{rightList.myMusicCommentNumber}}</p>
                                         <p style="margin-top: 10px">我的小组:{{rightList.myGroupNumber}}</p>
                                         <p style="margin-top: 10px">我的帖子:{{rightList.myInvitationNumber}}</p>
-
                                     </div>
                                 </el-card>
                             </div>
@@ -123,35 +97,30 @@
 </template>
 
 <script>
-    import {pageGetMovieByType} from "../../api/movie";
+    import {getBookTop} from "../../api/book";
     import {getRightTagInfo} from "../../api/user";
 
     export default {
-        name: "movieClassify",
+        name: "bookTop",
         data: function () {
             return {
                 radio2: '全部',
-                movieList: [{}],
+                bookList: [{}],
                 rightList: {},
                 paging: {
                     currentPage: 1,
                     limit: 10,
                 },
-
             }
-
         },
         methods: {
             getListByType() {
-                console.log("点击了类型")
-                console.log("点击的类型是" + this.radio2)
                 let params = {}
                 this.$set(params, "limit", this.paging.limit)
                 this.$set(params, "currentPage", this.paging.currentPage)
-                this.$set(params, "movie_type", this.radio2)
-                pageGetMovieByType(params).then(resp => {
-                    this.movieList = resp.data.data.records
-                    console.log(this.movieList);
+                getBookTop(params).then(resp => {
+                    this.bookList = resp.data.data.records
+                    console.log(this.bookList);
                 })
             },
             //页面改变分页每页数量
@@ -165,19 +134,17 @@
                 this.paging.currentPage = val
                 this.getListByType()
             },
-            goToMovieDetail(data) {
-                sessionStorage.setItem("detailId", data.movieId)
-                sessionStorage.setItem("detailType", 2)
+            goToBookDetail(data) {
+                sessionStorage.setItem("detailId", data.bookId)
+                sessionStorage.setItem("detailType", 1)
                 this.$router.push('/homePage/detail')
             }
-
         },
         created() {
             this.getListByType()
             getRightTagInfo().then(resp => {
                 this.rightList = resp.data.data;
             })
-
         }
     }
 </script>

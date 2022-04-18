@@ -8,142 +8,164 @@
 
         <div style="margin-right: 10px">
 
-        <!--  图书栏目-->
-        <div class="book-new" style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
-            <el-row>
-                <!--      图书左块          -->
-                <el-col :span="5" style="text-align: center">
-                    <h2 style="margin-top: 40%">书籍</h2>
-<!--                    <p style="margin-top: 10%" >分类</p>-->
-                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toBookClassify()">分类</el-button>
-<!--                    <p style="margin-top: 3%">总榜top100</p>-->
-                </el-col>
+            <!--  图书栏目-->
+            <div class="book-new"
+                 style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
+                <el-row>
+                    <!--      图书左块          -->
+                    <el-col :span="5" style="text-align: center">
+                        <h2 style="margin-top: 40%">书籍</h2>
+                        <!--                    <p style="margin-top: 10%" >分类</p>-->
+                        <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toBookClassify()">
+                            分类
+                        </el-button>
+                        <!--                    <p style="margin-top: 3%">总榜top100</p>-->
+                    </el-col>
 
-                <el-col :span="19" style="text-align: center">
-                    <h4 style="text-align: left">总榜top100...(更多)</h4>
-                    <el-row>
-                        <!--      图书右块          -->
-                        <el-col :span="4" v-for="(item, index) in mainPageBookList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="height: 50vh;">
-                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showDetail(item)">
-                                <div style="padding: 14px;">
-                                    <span>{{item.bookName}}</span>
-                                    <div class="bottom clearfix">
-                                        作者：<span class="secondLine">{{item.author}}</span>
-                                    </div>
-                                </div>
-                            </el-card>
-                        </el-col>
-                    </el-row>
-                </el-col>
-            </el-row>
-        </div>
-
-        <!--   电影栏目     -->
-        <div class="book-new" style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
-            <el-row>
-                <!--      图书左块          -->
-                <el-col :span="5" style="text-align: center">
-                    <h2 style="margin-top: 40%">电影</h2>
-                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toMovieClassify()">分类</el-button>
-<!--                    <p style="margin-top: 3%">总榜top100</p>-->
-                </el-col>
-
-                <el-col :span="19" style="text-align: center">
-                    <h4 style="text-align: left">总榜top100...(更多)</h4>
-                    <el-row>
-                        <!--      图书右块          -->
-                        <el-col :span="4" v-for="(item, index) in mainPageMovieList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
-                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showMovieDetail(item)">
-                                <div style="padding: 14px;">
-                                    <span>{{item.movieName}}</span>
-                                    <div class="bottom clearfix">
-                                        导演:<span class="secondLine">{{item.director}}</span>
-<!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
-                                    </div>
-                                </div>
-                            </el-card>
-                        </el-col>
-                    </el-row>
-                </el-col>
-            </el-row>
-        </div>
-
-
-
-        <!--   音乐栏目     -->
-        <div class="book-new" style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
-            <el-row>
-                <!--      图书左块          -->
-                <el-col :span="5" style="text-align: center">
-                    <h2 style="margin-top: 40%">音乐</h2>
-                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toMusicClassify()">分类</el-button>
-<!--                    <p style="margin-top: 3%">总榜top100</p>-->
-                </el-col>
-
-                <el-col :span="19" style="text-align: center">
-                    <h4 style="text-align: left">总榜top100...(更多)</h4>
-                    <el-row>
-                        <!--      音乐右块          -->
-                        <el-col :span="4" v-for="(item, index) in mainPageMusicList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
-                            <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
-                                <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh" @click="showMusicDetail(item)">
-                                <div style="padding: 14px;">
-                                    <span class="secondLine">{{item.musicName}}</span>
-                                    <div class="bottom clearfix">
-                                        歌手:<span>{{item.performer}}</span>
-<!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
-                                    </div>
-                                </div>
-                            </el-card>
-                        </el-col>
-                    </el-row>
-                </el-col>
-            </el-row>
-        </div>
-
-
-
-        <!--   小组栏目     -->
-        <div class="book-new" style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
-            <el-row>
-                <!--      图书左块          -->
-                <el-col :span="4" style="text-align: center">
-                    <h2 style="margin-top: 15%">小组</h2>
-                    <div> <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toGroupClassify()">分类</el-button></div>
-
-                    <el-button type="primary" round size="mini" style="margin-top: 10%" @click="tocreateGroup()">申请创建小组</el-button>
-                </el-col>
-
-
-                <el-col :span="20" style="text-align: center">
-                    <div>
-                        <h4>热门小组</h4>
+                    <el-col :span="19" style="text-align: center">
+                        <h4 style="text-align: left" @click="bookTop()">总榜top100...(更多)</h4>
                         <el-row>
-                            <!--      小组第一行          -->
-                            <el-col :span="4" v-for="(item) in groupInfoList" :key="item" style="margin-left: 0px;padding: 8px;">
-                                <el-card :body-style="{ padding: '0px' }">
-                                    <div style="float: left">
-                                        <img :src="item.groupHead" class="image" style="width:5vw;height: 10vh;margin-right: 0px" @click="gotoGroupDetail(item)">
-
+                            <!--      图书右块          -->
+                            <el-col :span="4" v-for="(item, index) in mainPageBookList" :key="item"
+                                    :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                                <el-card :body-style="{ padding: '0px' }" style="height: 50vh;">
+                                    <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh"
+                                         @click="showDetail(item)">
+                                    <div style="padding: 14px;">
+                                        <span>{{item.bookName}}</span>
+                                        <div class="bottom clearfix">
+                                            作者：<span class="secondLine">{{item.author}}</span>
+                                        </div>
                                     </div>
-                                    <div style="float: right;margin-right: 10%;margin-top: 10%;width: 6vw">
-                                        <p class="group-name">{{item.groupName}}</p>
-                                        <P style="margin-top: 2%">1989 人</P>
-                                    </div>
-
                                 </el-card>
                             </el-col>
                         </el-row>
-                    </div>
+                    </el-col>
+                </el-row>
+            </div>
 
-                </el-col>
+            <!--   电影栏目     -->
+            <div class="book-new"
+                 style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
+                <el-row>
+                    <!--      图书左块          -->
+                    <el-col :span="5" style="text-align: center">
+                        <h2 style="margin-top: 40%">电影</h2>
+                        <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toMovieClassify()">
+                            分类
+                        </el-button>
+                        <!--                    <p style="margin-top: 3%">总榜top100</p>-->
+                    </el-col>
+
+                    <el-col :span="19" style="text-align: center">
+                        <h4 style="text-align: left" @click="movieTop()">总榜top100...(更多)</h4>
+                        <el-row>
+                            <!--      图书右块          -->
+                            <el-col :span="4" v-for="(item, index) in mainPageMovieList" :key="item"
+                                    :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                                <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
+                                    <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh"
+                                         @click="showMovieDetail(item)">
+                                    <div style="padding: 14px;">
+                                        <span>{{item.movieName}}</span>
+                                        <div class="bottom clearfix">
+                                            导演:<span class="secondLine">{{item.director}}</span>
+                                            <!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
+                                        </div>
+                                    </div>
+                                </el-card>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                </el-row>
+            </div>
 
 
+            <!--   音乐栏目     -->
+            <div class="book-new"
+                 style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
+                <el-row>
+                    <!--      图书左块          -->
+                    <el-col :span="5" style="text-align: center">
+                        <h2 style="margin-top: 40%">音乐</h2>
+                        <el-button type="primary" round size="mini" style="margin-top: 10%" @click="toMusicClassify()">
+                            分类
+                        </el-button>
+                        <!--                    <p style="margin-top: 3%">总榜top100</p>-->
+                    </el-col>
 
-            </el-row>
-        </div>
+                    <el-col :span="19" style="text-align: center">
+                        <h4 style="text-align: left" @click="musicTop()">总榜top100...(更多)</h4>
+                        <el-row>
+                            <!--      音乐右块          -->
+                            <el-col :span="4" v-for="(item, index) in mainPageMusicList" :key="item"
+                                    :offset="index > 0 ? 5 : 0" style="margin-left: 0px;padding: 8px;">
+                                <el-card :body-style="{ padding: '0px' }" style="width:100%;height: 50vh">
+                                    <img :src="item.coverImg" class="image" style="width: 100%;height: 35vh"
+                                         @click="showMusicDetail(item)">
+                                    <div style="padding: 14px;">
+                                        <span class="secondLine">{{item.musicName}}</span>
+                                        <div class="bottom clearfix">
+                                            歌手:<span>{{item.performer}}</span>
+                                            <!--                                        <el-button type="text" class="button">操作按钮</el-button>-->
+                                        </div>
+                                    </div>
+                                </el-card>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                </el-row>
+            </div>
+
+
+            <!--   小组栏目     -->
+            <div class="book-new"
+                 style="border-bottom: 1px solid #e6e6e6;width: 100%;float: left;padding-bottom: 10px;margin-top: 10px">
+                <el-row>
+                    <!--      图书左块          -->
+                    <el-col :span="4" style="text-align: center">
+                        <h2 style="margin-top: 15%">小组</h2>
+                        <div>
+                            <el-button type="primary" round size="mini" style="margin-top: 10%"
+                                       @click="toGroupClassify()">分类
+                            </el-button>
+                        </div>
+
+                        <el-button type="primary" round size="mini" style="margin-top: 10%" @click="tocreateGroup()">
+                            申请创建小组
+                        </el-button>
+                    </el-col>
+
+
+                    <el-col :span="20" style="text-align: center">
+                        <div>
+                            <h4>热门小组</h4>
+                            <el-row>
+                                <!--      小组第一行          -->
+                                <el-col :span="4" v-for="(item) in groupInfoList" :key="item"
+                                        style="margin-left: 0px;padding: 8px;">
+                                    <el-card :body-style="{ padding: '0px' }">
+                                        <div style="float: left">
+                                            <img :src="item.groupHead" class="image"
+                                                 style="width:5vw;height: 10vh;margin-right: 0px"
+                                                 @click="gotoGroupDetail(item)">
+
+                                        </div>
+                                        <div style="float: right;margin-right: 10%;margin-top: 10%;width: 6vw">
+                                            <p class="group-name">{{item.groupName}}</p>
+                                            <P style="margin-top: 2%">1989 人</P>
+                                        </div>
+
+                                    </el-card>
+                                </el-col>
+                            </el-row>
+                        </div>
+
+                    </el-col>
+
+
+                </el-row>
+            </div>
         </div>
 
         <!--    页脚    -->
@@ -155,7 +177,9 @@
         <!-- 建立小组对话框  -->
         <el-dialog title="申请创建小组" :visible.sync="dialogTableVisible">
             <el-row>
-                <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+                <el-col :span="4">
+                    <div class="grid-content bg-purple"></div>
+                </el-col>
                 <el-col :span="16">
                     <!--         小组名称           -->
                     <div class="grid-content bg-purple-light" style="text-align: left;display: flex;margin-bottom: 1vh">
@@ -204,7 +228,8 @@
                     </div>
 
                     <!--          输入小组描述          -->
-                    <div class="grid-content bg-purple-light" style="text-align: left;display: flex;margin-bottom: 1vh;margin-top: 1vh">
+                    <div class="grid-content bg-purple-light"
+                         style="text-align: left;display: flex;margin-bottom: 1vh;margin-top: 1vh">
                         <p style="font-size: medium;margin-top: 1vh;margin-left: 3%">小组描述:</p>
                         <el-input
                                 type="textarea"
@@ -223,7 +248,9 @@
 
 
                 </el-col>
-                <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+                <el-col :span="4">
+                    <div class="grid-content bg-purple"></div>
+                </el-col>
             </el-row>
 
         </el-dialog>
@@ -238,126 +265,126 @@
     import {getUserMainPageMovie} from "../../api/movie";
     import {getUserMainPageMusic} from "../../api/music";
     import {uploadGroupImg} from "../../api/minio";
-    import {getImgURLByName,createGroup,getUserMainPageGroups} from "../../api/group";
+    import {createGroup, getImgURLByName, getUserMainPageGroups} from "../../api/group";
 
     export default {
         name: "userMainPage",
-        data:function () {
-            return{
-                dialogTableVisible:false,
-                input:'',
+        data: function () {
+            return {
+                dialogTableVisible: false,
+                input: '',
                 currentDate: new Date(),
-                mainPageBookList:[{}],
-                mainPageMovieList:[{}],
-                mainPageMusicList:[{}],
-                clickBookDetail:{},
+                mainPageBookList: [{}],
+                mainPageMovieList: [{}],
+                mainPageMusicList: [{}],
+                clickBookDetail: {},
                 options: [
                     {
-                    value: '影视',
-                    label: '影视'
-                }, {
-                    value: '音乐',
-                    label: '音乐'
-                }, {
-                    value: '文学',
-                    label: '文学'
-                },{
-                    value: '运动',
-                    label: '运动'
-                },{
-                    value: '美食',
-                    label: '美食'
-                },{
-                    value: '公益',
-                    label: '公益'
-                },{
-                    value: '家庭',
-                    label: '家庭'
-                },{
-                    value: '购物',
-                    label: '购物'
-                },{
-                    value: '求职',
-                    label: '求职'
-                },{
-                    value: '考试',
-                    label: '考试'
-                },{
-                    value: '艺术',
-                    label: '艺术'
-                },{
-                    value: '美术',
-                    label: '美术'
-                },{
-                    value: '情感',
-                    label: '情感'
-                },{
-                    value: '闲聊',
-                    label: '闲聊'
-                }
+                        value: '影视',
+                        label: '影视'
+                    }, {
+                        value: '音乐',
+                        label: '音乐'
+                    }, {
+                        value: '文学',
+                        label: '文学'
+                    }, {
+                        value: '运动',
+                        label: '运动'
+                    }, {
+                        value: '美食',
+                        label: '美食'
+                    }, {
+                        value: '公益',
+                        label: '公益'
+                    }, {
+                        value: '家庭',
+                        label: '家庭'
+                    }, {
+                        value: '购物',
+                        label: '购物'
+                    }, {
+                        value: '求职',
+                        label: '求职'
+                    }, {
+                        value: '考试',
+                        label: '考试'
+                    }, {
+                        value: '艺术',
+                        label: '艺术'
+                    }, {
+                        value: '美术',
+                        label: '美术'
+                    }, {
+                        value: '情感',
+                        label: '情感'
+                    }, {
+                        value: '闲聊',
+                        label: '闲聊'
+                    }
                 ],
                 value: [],
                 dialogImageUrl: '',
                 dialogVisible: false,
                 groupImgUploadVisible: true,
                 imageUrl: '',
-                groupDescription:"",
-                uploadFileImgFile:'',
+                groupDescription: "",
+                uploadFileImgFile: '',
                 //创建小组的表单
-                createGroup:{
-                    groupName:"",
-                    groupIntroduction:"",
-                    label:"",
-                    headImgName:"",
-                    groupHead:""
+                createGroup: {
+                    groupName: "",
+                    groupIntroduction: "",
+                    label: "",
+                    headImgName: "",
+                    groupHead: ""
                 },
                 //小组信息列表
-                groupInfoList:[{}],
-                groupInfoListFirstLine:[{}],
-                groupInfoListSecondLine:[{}],
-                uploadImgURL:""
+                groupInfoList: [{}],
+                groupInfoListFirstLine: [{}],
+                groupInfoListSecondLine: [{}],
+                uploadImgURL: ""
 
             }
         },
-        methods:{
-            tocreateGroup(){
+        methods: {
+            tocreateGroup() {
                 console.log(this.groupImgUploadVisible)
                 this.dialogTableVisible = true
                 this.groupImgUploadVisible = true
             },
             //点击书籍时跳转到书籍详情页
-            showDetail(data){
+            showDetail(data) {
                 console.log("点击了")
                 console.log(data)
                 //将点击的图书id传入浏览器，方便详情页获取
-                sessionStorage.setItem("detailId",data.bookId);
+                sessionStorage.setItem("detailId", data.bookId);
                 //存储点击详情的id，1表示是图书
-                sessionStorage.setItem("detailType",1)
+                sessionStorage.setItem("detailType", 1)
                 this.$router.push('/homePage/detail')
 
             },
-            showMovieDetail(data){
+            showMovieDetail(data) {
                 //将点击的图书id传入浏览器，方便详情页获取
-                sessionStorage.setItem("detailId",data.movieId)
+                sessionStorage.setItem("detailId", data.movieId)
                 //存储点击详情的id，2表示电影
-                sessionStorage.setItem("detailType",2)
+                sessionStorage.setItem("detailType", 2)
                 this.$router.push('/homePage/detail')
             },
-            showMusicDetail(data){
+            showMusicDetail(data) {
                 //将点击的图书id传入浏览器，方便详情页获取
-                sessionStorage.setItem("detailId",data.musicId)
+                sessionStorage.setItem("detailId", data.musicId)
                 //存储点击详情的id，3表示音乐
-                sessionStorage.setItem("detailType",3)
+                sessionStorage.setItem("detailType", 3)
                 this.$router.push('/homePage/detail')
             },
             //跳转到图书详情页面
-            toBookClassify(){
+            toBookClassify() {
                 this.$router.push('/homePage/classifyOfBook')
             },
-            toMovieClassify(){
+            toMovieClassify() {
                 this.$router.push('/homePage/classifyOfMovie')
             },
-            toMusicClassify(){
+            toMusicClassify() {
                 this.$router.push('/homePage/classifyOfMusic')
             },
             handleAvatarSuccess(res, file) {
@@ -376,7 +403,7 @@
                 }
                 return isJPG && isLt2M;
             },
-            uploadFile(obj){
+            uploadFile(obj) {
                 this.groupImgUploadVisible = false;
                 this.uploadFileImgFile = obj
                 console.log("执行了上传方法")
@@ -384,17 +411,17 @@
                 console.log(obj)
                 let fd = new FormData();
                 console.log(obj.file.name)
-                fd.append("file",obj["file"]);
-                fd.append("name",obj.file.name);
-                let params ={}
-                this.$set(params,"name",obj.file.name)
+                fd.append("file", obj["file"]);
+                fd.append("name", obj.file.name);
+                let params = {}
+                this.$set(params, "name", obj.file.name)
                 this.createGroup.headImgName = obj.file.name;
-                getImgURLByName(params).then(resp =>{
+                getImgURLByName(params).then(resp => {
                     this.uploadImgURL = resp.data.data;
                     console.log(this.uploadImgURL)
                 })
-                console.log("fd",fd)
-                uploadGroupImg(fd).then(()=>{
+                console.log("fd", fd)
+                uploadGroupImg(fd).then(() => {
                     this.$message({
                         message: '上传成功!',
                         type: 'success'
@@ -402,18 +429,16 @@
                 })
             },
             //底部的确定上传按钮
-            makeSureUpload(){
+            makeSureUpload() {
                 this.createGroup.groupName = this.input;
                 this.createGroup.groupIntroduction = this.groupDescription;
                 for (let i = 0; i < this.value.length; i++) {
-                    this.createGroup.label+=this.value[i]+"/";
+                    this.createGroup.label += this.value[i] + "/";
                 }
-                // console.log(this.createGroup.label)
-                // this.createGroup.label = this.value;
-                // console.log(this.value)
+
                 this.createGroup.groupHead = this.uploadImgURL;
-                // console.log(this.createGroup)
-                createGroup(this.createGroup).then(()=>{
+
+                createGroup(this.createGroup).then(() => {
                     this.$message({
                         message: '上传成功!',
                         type: 'success'
@@ -427,38 +452,51 @@
                 this.createGroup.groupName = "";
                 this.createGroup.groupIntroduction = "";
                 this.createGroup.label = "";
-                this.headImgName="";
-                this.groupHead='';
+                this.headImgName = "";
+                this.groupHead = '';
                 this.input = '';
-                this.value='';
+                this.value = '';
                 this.groupDescription = '';
                 //使得第二次打开能有图片上传的组件
             },
             //点击跳转到小组详情页面
-            gotoGroupDetail(data){
+            gotoGroupDetail(data) {
                 this.$router.push("/homePage/groupDetail")
-                sessionStorage.setItem("groupId",data.groupId);
+                sessionStorage.setItem("groupId", data.groupId);
             },
             //搜索页面调用的方法，将关键字存入浏览器中
-            gotoSearchPage(){
-                sessionStorage.setItem("keyword",this.input);
+            gotoSearchPage() {
+                sessionStorage.setItem("keyword", this.input);
                 this.$router.push("/homePage/searchPage")
+            },
+            //去到小组的分俩页面
+            toGroupClassify() {
+                this.$router.push("/homePage/classifyOfGroup")
+            },
+            bookTop() {
+                this.$router.push("/homePage/bookTop")
+            },
+            movieTop() {
+                this.$router.push("/homePage/movieTop")
+            },
+            musicTop() {
+                this.$router.push("/homePage/musicTop")
             }
 
         },
         created() {
-            getUserMainPageBook().then(resp =>{
+            getUserMainPageBook().then(resp => {
                 this.mainPageBookList = resp.data.data;
                 console.log(this.mainPageBookList)
             })
-            getUserMainPageMovie().then(resp =>{
+            getUserMainPageMovie().then(resp => {
                 this.mainPageMovieList = resp.data.data;
             })
-            getUserMainPageMusic().then(resp =>{
+            getUserMainPageMusic().then(resp => {
                 this.mainPageMusicList = resp.data.data;
             })
 
-            getUserMainPageGroups().then(resp =>{
+            getUserMainPageGroups().then(resp => {
                 this.groupInfoList = resp.data.data
             })
 
@@ -502,13 +540,16 @@
     .bg-purple {
         background: white;
     }
+
     .bg-purple-light {
         background: white;
     }
+
     .grid-content {
         border-radius: 4px;
         min-height: 36px;
     }
+
     .avatar-uploader .el-upload {
         border: 1px dashed #d9d9d9;
         border-radius: 6px;
@@ -516,9 +557,11 @@
         position: relative;
         overflow: hidden;
     }
+
     .avatar-uploader .el-upload:hover {
         border-color: #409EFF;
     }
+
     .avatar-uploader-icon {
         font-size: 28px;
         color: #8c939d;
@@ -527,6 +570,7 @@
         line-height: 178px;
         text-align: center;
     }
+
     .avatar {
         width: 178px;
         height: 178px;
@@ -537,7 +581,7 @@
         display: none;
     }
 
-    .group-name{
+    .group-name {
         /*width: 300px;*/
         /* 规定当内容溢出元素框（容器）时隐藏 */
         overflow: hidden;
@@ -548,7 +592,7 @@
     }
 
     /*帖子的详细信息中帖子内容的换行显示css*/
-    .secondLine{
+    .secondLine {
         width: 100%;
         font-size: medium;
         word-break: break-all;

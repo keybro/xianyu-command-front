@@ -93,3 +93,44 @@ export  function getSearchGroup(params){
         params: params
     })
 }
+
+
+/**
+ * 用户个人中心修改小徐信息
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  updateGroupInfo(group){
+    return request({
+        url:`group/updateGroupInfo`,
+        method:"post",
+        data: group,
+    })
+}
+
+
+/**
+ * 分页获取全部小组
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function pageGetAllGroupInfos(params){
+    return request({
+        url:`/group/pageGetAllGroup`,
+        method:"get",
+        params: params
+    })
+}
+
+
+/**
+ * 根据id删除书籍
+ * @param id
+ * @returns {AxiosPromise}
+ */
+export  function  removeGroupById(id){
+    return request({
+        url:`group/removeGroupById/${id}`,
+        method:"post",
+    })
+}

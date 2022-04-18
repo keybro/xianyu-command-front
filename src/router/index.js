@@ -13,6 +13,10 @@ import musicClassify from "../views/classify/musicClassify";
 import groupClassify from "../views/classify/groupClassify";
 import invitationDetail from "../views/invitation/invitationDetail";
 import searchPage from "../views/search/searchPage"
+import bookTop from "../views/top/bookTop";
+import movieTop from "../views/top/movieTop";
+import musicTop from "../views/top/musicTop";
+import adminPersonCenter from "../views/admin/adminPersonCenter";
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,7 +34,11 @@ const routes = [
             {path: "classifyOfMusic",component: musicClassify},
             {path: "classifyOfGroup",component: groupClassify},
             {path: "invitationDetail",component: invitationDetail},
-            {path: "searchPage",component: searchPage}
+            {path: "searchPage",component: searchPage},
+            {path: "bookTop",component: bookTop},
+            {path: "movieTop",component: movieTop},
+            {path: "musicTop",component: musicTop},
+            {path: "admin",component: adminPersonCenter},
         ]
     }
 ]

@@ -1,5 +1,5 @@
 <template>
-    <div class="movie-classify">
+    <div class="movie-top">
         <el-row>
             <el-col :span="2">
                 <div class="grid-content bg-purple"></div>
@@ -17,28 +17,27 @@
                                     <h4 style="margin-left: 10px">选择电影</h4>
                                 </div>
                                 <div style="display: flex;margin-top: 10px">
-                                    <p style="margin-left: 10px;margin-left: 10px;margin-top: 5px">电影类型:</p>
-                                    <div style="margin-top: 20px;margin: 0px;margin-right: 0px;margin-left: 10px">
-                                        <el-radio-group v-model="radio2" size="small" @change="getListByType()"
-                                                        style="width: 100%">
-                                            <el-radio-button label="全部"></el-radio-button>
-                                            <el-radio-button label="剧情"></el-radio-button>
-                                            <el-radio-button label="动作"></el-radio-button>
-                                            <el-radio-button label="历史"></el-radio-button>
-                                            <el-radio-button label="战争"></el-radio-button>
-                                            <el-radio-button label="科幻"></el-radio-button>
-                                            <el-radio-button label="冒险"></el-radio-button>
-                                            <el-radio-button label="爱情"></el-radio-button>
-                                            <el-radio-button label="喜剧"></el-radio-button>
-                                            <el-radio-button label="灾难"></el-radio-button>
-                                            <el-radio-button label="犯罪"></el-radio-button>
-                                            <el-radio-button label="动画"></el-radio-button>
-                                            <el-radio-button label="惊悚"></el-radio-button>
-                                            <el-radio-button label="家庭"></el-radio-button>
-                                            <el-radio-button label="运动"></el-radio-button>
-                                            <el-radio-button label="悬疑"></el-radio-button>
-                                        </el-radio-group>
-                                    </div>
+                                    <!--                                    <p style="margin-left: 10px;margin-left: 10px;margin-top: 5px">电影类型:</p>-->
+                                    <!--                                    <div style="margin-top: 20px;margin: 0px;margin-right: 0px;margin-left: 10px">-->
+                                    <!--                                        <el-radio-group v-model="radio2" size="small" @change="getListByType()" style="width: 100%">-->
+                                    <!--                                            <el-radio-button label="全部"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="剧情"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="动作"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="历史"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="战争"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="科幻"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="冒险"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="爱情"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="喜剧"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="灾难"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="犯罪"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="动画"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="惊悚"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="家庭"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="运动"></el-radio-button>-->
+                                    <!--                                            <el-radio-button label="悬疑"></el-radio-button>-->
+                                    <!--                                        </el-radio-group>-->
+                                    <!--                                    </div>-->
 
                                 </div>
 
@@ -100,7 +99,6 @@
                                         <p style="margin-top: 10px">我的音乐评论:{{rightList.myMusicCommentNumber}}</p>
                                         <p style="margin-top: 10px">我的小组:{{rightList.myGroupNumber}}</p>
                                         <p style="margin-top: 10px">我的帖子:{{rightList.myInvitationNumber}}</p>
-
                                     </div>
                                 </el-card>
                             </div>
@@ -118,19 +116,17 @@
         <div class="footer" style="text-align: center;">
             <h3 style="margin-top: 3px;margin-bottom: 3px;">邮友论坛</h3>
         </div>
-
     </div>
 </template>
 
 <script>
-    import {pageGetMovieByType} from "../../api/movie";
+    import {getMovieTop} from "../../api/movie";
     import {getRightTagInfo} from "../../api/user";
 
     export default {
-        name: "movieClassify",
+        name: "movieTop",
         data: function () {
             return {
-                radio2: '全部',
                 movieList: [{}],
                 rightList: {},
                 paging: {
@@ -143,13 +139,11 @@
         },
         methods: {
             getListByType() {
-                console.log("点击了类型")
-                console.log("点击的类型是" + this.radio2)
                 let params = {}
                 this.$set(params, "limit", this.paging.limit)
                 this.$set(params, "currentPage", this.paging.currentPage)
-                this.$set(params, "movie_type", this.radio2)
-                pageGetMovieByType(params).then(resp => {
+
+                getMovieTop(params).then(resp => {
                     this.movieList = resp.data.data.records
                     console.log(this.movieList);
                 })

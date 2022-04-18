@@ -2,7 +2,9 @@
     <!--  小组详情页面  -->
     <div class="group-detail">
         <el-row>
-            <el-col :span="2"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="2">
+                <div class="grid-content bg-purple"></div>
+            </el-col>
             <el-col :span="20">
                 <div>
                     <el-row>
@@ -15,7 +17,8 @@
                                                 :src="this.groupDetailInfo.groupHead"
                                                 :preview-src-list="srcList">
                                         </el-image>
-                                        <h4 id="title" style="margin-left: 10px;margin-top: 10px">{{this.groupDetailInfo.groupName}}</h4>
+                                        <h4 id="title" style="margin-left: 10px;margin-top: 10px">
+                                            {{this.groupDetailInfo.groupName}}</h4>
                                     </div>
 
                                     <p style="margin-top: 10px;text-align: left">组长:{{createrName}}</p>
@@ -26,8 +29,10 @@
                                     <el-button type="primary" size="small" @click="createJoinApp()">加入小组</el-button>
                                     <div style="display: flex;margin-top: 10px;margin-bottom: 10px">
                                         <p style="margin-top: 5px">小组标签：</p>
-                                        <el-tag v-for="(item) in labelArray.slice(0,labelArray.length-1)" :key="item">{{item}}</el-tag>
-<!--                                        <el-tag type="success">甜宠</el-tag>-->
+                                        <el-tag v-for="(item) in labelArray.slice(0,labelArray.length-1)" :key="item">
+                                            {{item}}
+                                        </el-tag>
+                                        <!--                                        <el-tag type="success">甜宠</el-tag>-->
                                     </div>
                                 </div>
                             </div>
@@ -35,64 +40,89 @@
                     </el-row>
 
                     <el-row style="margin-top: 6px;border-right: 1px #e6e6e6 solid;border-left: 1px #e6e6e6 solid;;margin-top: 0px">
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                         <!--         作品的简介内容           -->
                         <el-col :span="22">
                             <div class="grid-content bg-purple-light" style="text-align: left">
                                 <h4 style="margin-top: 5px">简介:</h4>
                             </div>
                         </el-col>
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                     </el-row>
 
                     <el-row style="border-right: 1px #e6e6e6 solid;border-left: 1px #e6e6e6 solid;">
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                         <!--         作品的简介内容           -->
                         <el-col :span="22">
                             <div class="grid-content bg-purple-light" style="text-align: left">
                                 {{this.groupDetailInfo.groupIntroduction}}
                             </div>
                         </el-col>
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                     </el-row>
 
 
                     <el-row style="border-top: 1px #e6e6e6 solid;border-left: 1px #e6e6e6 solid;border-right: 1px #e6e6e6 solid">
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                         <!--         喜欢推荐标题           -->
                         <el-col :span="22">
                             <div class="grid-content bg-purple-light" style="text-align: left">
                                 <h4 style="margin-top: 10px">喜欢这个作品的人也喜欢</h4>
                             </div>
                         </el-col>
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                     </el-row>
 
                     <!--    推荐card书籍部分        -->
                     <el-row style="margin-top: 6px;margin-bottom: 10px;border-left: 1px #e6e6e6 solid;border-right: 1px #e6e6e6 solid">
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                         <!--         喜欢推荐标题           -->
                         <el-col :span="22">
                             <div class="grid-content bg-purple-light" style="text-align: left">
 
                                 <!--           图片card部分             -->
-                                <el-row style="margin-top: 6px">
-                                    <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
-                                    <!--         喜欢推荐标题           -->
-                                    <el-col :span="4" v-for="(item, index) in recommendGroupList" :key="item" :offset="index > 0 ? 5 : 0" style="margin-left: 0px;margin-right: 10px;display: flex">
-                                            <img :src="item.groupHead" alt="" style="width: 8vw;height: 14vh;margin-left: 3vw" @click="toThisDetail(item.groupId)">
-                                            <div>
-                                                <p class="group-name-recommend" style="width: 5vw">{{item.groupName}}</p>
-                                                <p style="margin-top: 10px">1919人</p>
-                                            </div>
+                                <!--                                <el-row style="margin-top: 6px">-->
+                                <!--                                    <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>-->
+                                <!--                                    &lt;!&ndash;         喜欢推荐标题           &ndash;&gt;-->
+                                <!--                                    <el-col :span="4" v-for="(item, index) in recommendGroupList" :key="item" :offset="index > 0 ? 5 : 0" style="display: flex;margin-left: 10px">-->
+                                <!--                                            <img :src="item.groupHead" alt="" style="width: 8vw;height: 14vh;margin-left: 3vw" @click="toThisDetail(item.groupId)">-->
+                                <!--                                            <div>-->
+                                <!--                                                <p class="group-name-recommend" style="width: 5vw">{{item.groupName}}</p>-->
+                                <!--                                                <p style="margin-top: 10px">1919人</p>-->
+                                <!--                                            </div>-->
 
-                                    </el-col>
-<!--                                    <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>-->
-                                </el-row>
+                                <!--                                    </el-col>-->
+                                <!--                                </el-row>-->
+
+                                <div style="display: flex;justify-content: center;" v-for="item in recommendGroupList"
+                                     :key="item">
+                                    <img :src="item.groupHead" alt="" style="width: 8vw;height: 14vh;margin-left: 5px">
+                                    <div style="margin-left: 2px">
+                                        <p class="group-name-recommend" style="width: 5vw">{{item.groupName}}</p>
+                                        <p style="margin-top: 10px">{{item.personNumber}}人</p>
+                                    </div>
+
+                                </div>
 
                             </div>
                         </el-col>
-                        <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                        <el-col :span="1">
+                            <div class="grid-content bg-purple"></div>
+                        </el-col>
                     </el-row>
 
                     <el-row>
@@ -104,13 +134,17 @@
                                         <el-breadcrumb-item><a href="/">最热讨论</a></el-breadcrumb-item>
                                         <el-breadcrumb-item id="behind"><a href="/">最近讨论</a></el-breadcrumb-item>
                                     </el-breadcrumb>
-                                    <el-button type="primary" size="small" class="right" style="margin-top: 10px" @click="dialogTableVisible = true">发言</el-button>
-<!--                                    <p >发言</p>-->
+                                    <el-button type="primary" size="small" class="right" style="margin-top: 10px"
+                                               @click="dialogTableVisible = true">发言
+                                    </el-button>
+                                    <!--                                    <p >发言</p>-->
                                 </div>
                                 <div class="bottom" style="text-align: center">
                                     <div style="text-align: center; width: 90%;margin-left: 5%">
                                         <el-row>
-                                            <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                                            <el-col :span="1">
+                                                <div class="grid-content bg-purple"></div>
+                                            </el-col>
                                             <el-col :span="22">
                                                 <div class="grid-content bg-purple-light">
                                                     <el-table
@@ -145,10 +179,11 @@
                                                     </el-table>
                                                 </div>
                                             </el-col>
-                                            <el-col :span="1"><div class="grid-content bg-purple"></div></el-col>
+                                            <el-col :span="1">
+                                                <div class="grid-content bg-purple"></div>
+                                            </el-col>
                                         </el-row>
                                     </div>
-
 
 
                                     <div class="pagination">
@@ -178,7 +213,9 @@
                     </el-row>
                 </div>
             </el-col>
-            <el-col :span="2"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="2">
+                <div class="grid-content bg-purple"></div>
+            </el-col>
         </el-row>
 
 
@@ -194,7 +231,8 @@
             <div class="comment-score" style="background: #f8f8f8;text-align: left">
                 <div style="margin-left: 3%;margin-top: 1vh">
                     标题：
-                    <el-input v-model="createInvitation.invitationTitle" placeholder="请输入帖子标题" style="width: 92%"></el-input>
+                    <el-input v-model="createInvitation.invitationTitle" placeholder="请输入帖子标题"
+                              style="width: 92%"></el-input>
                 </div>
             </div>
 
@@ -216,96 +254,92 @@
         </el-dialog>
 
 
-
-
-
-
     </div>
 </template>
 
 <script>
-    import {getGroupDetailById,getGroupRecommendById} from "../../api/group";
+    import {getGroupDetailById, getGroupRecommendById} from "../../api/group";
     import {getUserInfoById} from "../../api/user";
     import {createJoinApplication} from "../../api/join";
-    import {createInvitation,pageGetInvitationByGroup} from "../../api/invitation";
+    import {createInvitation, pageGetInvitationByGroup} from "../../api/invitation";
 
     export default {
         name: "groupDetail",
         data() {
             return {
-                dialogTableVisible:false,
-                groupDetailInfo:{},
+                dialogTableVisible: false,
+                groupDetailInfo: {},
                 fits: ['fill', 'fill', 'fill', 'fill', 'fill'],
                 url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
                 srcList: [
                     'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 ],
-                list:[1,2,3,4,5,6,7,8],
+                list: [1, 2, 3, 4, 5, 6, 7, 8],
                 reverse: true,
-                labelArray:[{}],
-                endLabelArray:[{}],
-                recommendGroupList:[{}],
-                createrName:'',
-                invitationTitle:"",
-                invitationContent:"",
-                currentGroupName:"",
-                createInvitation:{
-                    invitationTitle:"",
-                    invitationContent:"",
-                    groupId:""
+                labelArray: [{}],
+                endLabelArray: [{}],
+                recommendGroupList: [{}],
+                createrName: '',
+                invitationTitle: "",
+                invitationContent: "",
+                currentGroupName: "",
+                createInvitation: {
+                    invitationTitle: "",
+                    invitationContent: "",
+                    groupId: ""
                 },
-                paging:{
-                    currentPage:1,
-                    limit:10,
+                paging: {
+                    currentPage: 1,
+                    limit: 10,
                 },
-                invitationList:[{}],
+                invitationList: [{}],
             }
         },
-        methods:{
-            showInvitationDetail(row){
+        methods: {
+            showInvitationDetail(row) {
                 console.log("触发了点击表格方法")
                 console.log(row);
                 console.log(row.invitationId)
-                sessionStorage.setItem("invitationId",row.invitationId)
+                sessionStorage.setItem("invitationId", row.invitationId)
                 this.$router.push("/homePage/invitationDetail");
             },
-            toThisDetail(id){
-                getGroupDetailById(id).then(resp =>{
+            toThisDetail(id) {
+                getGroupDetailById(id).then(resp => {
                     this.groupDetailInfo = resp.data.data;
                     this.currentGroupName = resp.data.data.groupName;
                     this.labelArray = resp.data.data.label.split('/');
-                    getUserInfoById(resp.data.data.createrId).then(resp =>{
+                    getUserInfoById(resp.data.data.createrId).then(resp => {
                         this.createrName = resp.data.data.nickname;
                     })
                 })
-                getGroupRecommendById(id).then(resp =>{
+                getGroupRecommendById(id).then(resp => {
                     this.recommendGroupList = resp.data.data;
                     console.log("推荐的小组")
                     console.log(this.recommendGroupList)
                 })
 
             },
-            getInvitationList(){
+            getInvitationList() {
                 let groupId = sessionStorage.getItem("groupId")
-                let params ={}
-                this.$set(params,"limit",this.paging.limit)
-                this.$set(params,"currentPage",this.paging.currentPage)
-                this.$set(params,"groupId",groupId)
-                pageGetInvitationByGroup(params).then(resp =>{
+                let params = {}
+                this.$set(params, "limit", this.paging.limit)
+                this.$set(params, "currentPage", this.paging.currentPage)
+                this.$set(params, "groupId", groupId)
+                pageGetInvitationByGroup(params).then(resp => {
                     this.invitationList = resp.data.data.records
-                    for (let i = 0; i < this.invitationList.length; i++) {
-                        getUserInfoById(this.invitationList[i].createrId).then(resp=>{
-                            this.invitationList[i].createrName = resp.data.data.nickname;
-                            this.invitationList[i].replyNumber = 10
-                        })
-                    }
+                    // for (let i = 0; i < this.invitationList.length; i++) {
+                    //      getUserInfoById(this.invitationList[i].createrId).then(resp=>{
+                    //         this.invitationList[i].createrName = resp.data.data.nickname;
+                    //         this.invitationList[i].replyNumber = 10
+                    //     })
+                    // }
                     console.log(this.invitationList)
                 })
             },
-            uploadInvitation(){
+            uploadInvitation() {
                 let groupId = sessionStorage.getItem("groupId");
                 this.createInvitation.groupId = groupId;
-                createInvitation(this.createInvitation).then(()=>{
+                createInvitation(this.createInvitation).then(() => {
                     this.$message({
                         message: '发帖成功！',
                         type: 'success'
@@ -314,10 +348,10 @@
                 })
 
             },
-            createJoinApp(){
+            createJoinApp() {
                 let groupId = sessionStorage.getItem("groupId");
                 console.log(groupId)
-                createJoinApplication(groupId).then(() =>{
+                createJoinApplication(groupId).then(() => {
                     this.$message({
                         message: '恭喜你成为该小组的一员！',
                         type: 'success'
@@ -325,35 +359,34 @@
                 })
             },
             //页面改变分页每页数量
-            handleSizeChange(val){
-                this.paging.limit=val
-                this.paging.currentPage=1
+            handleSizeChange(val) {
+                this.paging.limit = val
+                this.paging.currentPage = 1
                 this.getInvitationList()
             },
             //页面改变分页当前页数
-            handleCurrentChange(val){
-                this.paging.currentPage=val
+            handleCurrentChange(val) {
+                this.paging.currentPage = val
                 this.getInvitationList()
             },
 
         },
         created() {
             let groupId = sessionStorage.getItem("groupId");
-            this.getInvitationList();
-            getGroupDetailById(groupId).then(resp =>{
+            setTimeout(this.getInvitationList(), 1000);
+            getGroupDetailById(groupId).then(resp => {
                 this.groupDetailInfo = resp.data.data;
                 this.currentGroupName = resp.data.data.groupName;
                 this.labelArray = resp.data.data.label.split('/');
-                getUserInfoById(resp.data.data.createrId).then(resp =>{
+                getUserInfoById(resp.data.data.createrId).then(resp => {
                     this.createrName = resp.data.data.nickname;
                 })
             })
-            getGroupRecommendById(groupId).then(resp =>{
+            getGroupRecommendById(groupId).then(resp => {
                 this.recommendGroupList = resp.data.data;
                 console.log("推荐的小组")
                 console.log(this.recommendGroupList)
             })
-
 
 
         }
@@ -361,7 +394,7 @@
 </script>
 
 <style scoped>
-    .group-detail{
+    .group-detail {
         width: 99.9%;
         height: 100%;
         border: #e6e6e6 1px solid;
@@ -374,120 +407,121 @@
         flex-direction: row;
     }
 
-    .header{
+    .header {
         /*height: 21vh;*/
         border: 1px #e6e6e6 solid;
         display: flex;
         justify-content: flex-start;
     }
 
-    .left{
+    .left {
         margin: 3vh 15vh 3vh 3vh;
     }
 
-    .image__preview{
+    .image__preview {
         display: flex;
         flex-direction: row;
     }
 
-    .image__preview p{
+    .image__preview p {
         margin-left: 1vh;
     }
 
-    .header .left h3{
+    .header .left h3 {
         margin-top: 1vh;
         margin-left: -2vh;
     }
 
-    .right{
+    .right {
         margin-top: 3vh;
     }
 
-    .header .right{
+    .header .right {
         /*float: left;*/
         position: relative;
         left: 8vh;
         top: 8vh;
     }
 
-    .label{
+    .label {
         position: relative;
         left: 7vh;
     }
 
-    .label p{
+    .label p {
         font-size: initial;
         display: inline-block;
     }
 
-    .introduction{
+    .introduction {
         height: 16vh;
         border: #e6e6e6 1px solid;
     }
 
-    .introduction h3{
+    .introduction h3 {
         margin: 3vh 3vh 3vh 3vh;
     }
 
-    .like{
+    .like {
         height: 25vh;
         border: #e6e6e6 1px solid;
         display: flex;
         flex-direction: column;
     }
 
-    .like #like{
+    .like #like {
         float: left;
         margin: 3vh 3vh 3vh 3vh;
         display: flex;
         justify-content: flex-start;
     }
 
-    .images{
+    .images {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 0 3vh;
     }
 
-    .like .images .block{
+    .like .images .block {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .like .images .block .member{
+    .like .images .block .member {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-left: 1vh;
     }
 
-    .like .images .block .member p{
+    .like .images .block .member p {
         color: black;
     }
 
-    .comment{
+    .comment {
         /*height: 62vh;*/
         border: #e6e6e6 1px solid;
         display: flex;
         flex-direction: column;
     }
 
-    .comment .top{
+    .comment .top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .comment .top .icon{
+    .comment .top .icon {
         margin-left: 1vh;
     }
-    .comment .top .left{
+
+    .comment .top .left {
         font-size: medium;
     }
 
-    .comment .top .right{
+    .comment .top .right {
         float: right;
         position: relative;
         left: -12vh;
@@ -495,16 +529,16 @@
         font-weight: bolder;
     }
 
-    .bottom{
+    .bottom {
         margin: 0 3vh;
-        outline: 1px #e6e6e6  dashed;
-        outline-offset:-5px;
-        border-radius:10px;
-        box-shadow:0 0 0 5px transparent;
+        outline: 1px #e6e6e6 dashed;
+        outline-offset: -5px;
+        border-radius: 10px;
+        box-shadow: 0 0 0 5px transparent;
         padding-top: 3vh;
     }
 
-    .item{
+    .item {
         color: #2b95f5;
         margin: 0vh 8vh 3vh 5vh;
         display: flex;
@@ -512,22 +546,22 @@
         justify-content: space-between;
     }
 
-    .item span{
+    .item span {
         font-weight: bolder;
     }
 
-    .item #write{
+    .item #write {
         position: relative;
         left: 1vh;
     }
 
-    .items{
+    .items {
         margin-right: 3vh;
         position: relative;
         top: -2vh;
     }
 
-    .items .blocks{
+    .items .blocks {
         margin: 0vh 3vh 0vh 3vh;
         display: flex;
         flex-direction: row;
@@ -536,7 +570,7 @@
         top: 0.5vh;
     }
 
-    .el-divider{
+    .el-divider {
         margin: 1vh 3vh 1vh 3vh;
     }
 
@@ -545,11 +579,11 @@
     /*    top: 6vh;*/
     /*}*/
 
-    .footer{
+    .footer {
         /*height: 4vh;*/
     }
 
-    .footer p{
+    .footer p {
         margin: 0 auto;
         font-size: medium;
         display: flex;
@@ -561,15 +595,17 @@
     .bg-purple {
         background: white;
     }
+
     .bg-purple-light {
         background: white;
     }
+
     .grid-content {
         border-radius: 0px;
         min-height: 36px;
     }
 
-    .group-name-recommend{
+    .group-name-recommend {
         /*width: 300px;*/
         /* 规定当内容溢出元素框（容器）时隐藏 */
         overflow: hidden;
@@ -582,9 +618,11 @@
     .bg-purple {
         /*background: black;*/
     }
+
     .bg-purple-light {
         /*background: black;*/
     }
+
     .grid-content {
         border-radius: 4px;
         min-height: 36px;

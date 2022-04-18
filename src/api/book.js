@@ -1,4 +1,5 @@
 import request from "../utils/request"
+import requst from "../utils/request";
 
 /**
  * 获取用户首页的5个书籍
@@ -61,6 +62,78 @@ export  function  getSearchBook(params){
         url:`book/getSearchBook`,
         method:"get",
         params: params
+    })
+}
+
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getBookTop(params){
+    return request({
+        url:`book/getBookTop`,
+        method:"get",
+        params: params
+    })
+}
+
+
+/**
+ *
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  pageGetAllBook(params){
+    return request({
+        url:`book/pageGetAllBook`,
+        method:"get",
+        params: params
+    })
+}
+
+
+/**
+ * 根据图片名称获取图片的URL
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getBookURLByName(params){
+    return request({
+        url:`book/getBookHeadImgURL`,
+        method:"get",
+        params: params,
+
+    })
+}
+
+
+
+/**
+ * 创建书本
+ * @param book
+ * @returns {AxiosPromise}
+ */
+export  function createBook(book) {
+    return requst({
+        url:'/book/createBook',
+        method: 'post',
+        data:book
+    })
+}
+
+
+
+/**
+ * 根据id删除书籍
+ * @param id
+ * @returns {AxiosPromise}
+ */
+export  function  removeBookById(id){
+    return request({
+        url:`book/removeBookById/${id}`,
+        method:"post",
     })
 }
 

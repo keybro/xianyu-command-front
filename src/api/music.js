@@ -1,4 +1,5 @@
 import request from "../utils/request"
+import requst from "../utils/request";
 
 /**
  * 获取用户首页的5首歌
@@ -52,7 +53,7 @@ export  function  pageGetMusicByType(params){
 
 
 /**
- * 搜索页面根据关键词和作品类型显示书本列表
+ * 搜索页面根据关键词和作品类型显示音乐列表
  * @param params
  * @returns {AxiosPromise}
  */
@@ -61,5 +62,75 @@ export  function  getSearchMusic(params){
         url:`music/getSearchMusic`,
         method:"get",
         params: params
+    })
+}
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getMusicTop(params){
+    return request({
+        url:`/music/getMusicTop`,
+        method:"get",
+        params: params
+    })
+}
+
+
+/**
+ * 搜索页面根据关键词和作品类型显示书本列表
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  pageGetAllMusic(params){
+    return request({
+        url:`/music/pageGetAllMusic`,
+        method:"get",
+        params: params
+    })
+}
+
+
+/**
+ * 根据图片名称获取图片的URL
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  getMusicURLByName(params){
+    return request({
+        url:`music/getMusicHeadImgURL`,
+        method:"get",
+        params: params,
+
+    })
+}
+
+
+/**
+ * 创建书本
+ * @param movie
+ * @returns {AxiosPromise}
+ */
+export  function createMusic(music) {
+    return requst({
+        url:'/music/createMusic',
+        method: 'post',
+        data:music
+    })
+}
+
+
+
+/**
+ * 根据id删除音乐
+ * @param id
+ * @returns {AxiosPromise}
+ */
+export  function  removeMusicById(id){
+    return request({
+        url:`music/removeMusicById/${id}`,
+        method:"post",
     })
 }
