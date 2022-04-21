@@ -60,6 +60,7 @@
                                             <div style="width: 30vw;margin-top: 10px">
                                                 <p class="detail-hidden">主演:{{item.actor}}</p>
                                             </div>
+                                            <p style="margin-top: 10px">评分:{{item.movieScore}}</p>
                                         </div>
                                     </div>
 

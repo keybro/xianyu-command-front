@@ -59,6 +59,7 @@
                                             <p style="margin-top: 5px">歌曲类型:{{item.musicType}}</p>
                                             <p style="margin-top: 5px">发行时间:{{item.publishTime}}</p>
                                             <p style="margin-top: 5px">出版者:{{item.publishName}}</p>
+                                            <p style="margin-top: 5px">评分:{{item.musicScore}}</p>
                                             <!--                                            <div style="width: 30vw;margin-top: 10px">-->
                                             <!--                                                <p class="detail-hidden">主演:{{item.actor}}</p>-->
                                             <!--                                            </div>-->

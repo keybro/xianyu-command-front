@@ -36,6 +36,7 @@
                                             <div style="width: 30vw;margin-top: 10px">
                                                 <p class="detail-hidden">简介:{{item.bookIntroduce}}</p>
                                             </div>
+                                            <p style="margin-top: 10px">评分:{{item.score}}</p>
                                         </div>
                                     </div>
 
