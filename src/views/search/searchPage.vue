@@ -108,7 +108,7 @@
                                                 :current-page="paging.currentPage"
                                                 :page-size="paging.limit"
                                                 layout="total,sizes,prev,pager,next"
-                                                :total="100">
+                                                :total="this.Len">
                                         </el-pagination>
                                     </div>
                                 </div>
@@ -127,11 +127,11 @@
                                     </div>
 
                                     <div style="text-align: left;margin-left: 5%">
-                                        <p>我的书籍评论:</p>
-                                        <p style="margin-top: 10px">我的电影评论:</p>
-                                        <p style="margin-top: 10px">我的音乐评论:</p>
-                                        <p style="margin-top: 10px">我的小组:</p>
-                                        <p style="margin-top: 10px">我的帖子:</p>
+                                        <p>我的书籍评论:{{rightList.myBookCommentNumber}}</p>
+                                        <p style="margin-top: 10px">我的电影评论:{{rightList.myMovieCommentNumber}}</p>
+                                        <p style="margin-top: 10px">我的音乐评论:{{rightList.myMusicCommentNumber}}</p>
+                                        <p style="margin-top: 10px">我的小组:{{rightList.myGroupNumber}}</p>
+                                        <p style="margin-top: 10px">我的帖子:{{rightList.myInvitationNumber}}</p>
                                     </div>
                                 </el-card>
                             </div>
@@ -158,6 +158,7 @@
     import {getSearchMovie} from "../../api/movie";
     import {getSearchMusic} from "../../api/music";
     import {getSearchGroup} from "../../api/group";
+    import {getRightTagInfo} from "../../api/user";
 
     export default {
         name: "searchPage",
@@ -168,6 +169,8 @@
                 movieList:[{}],
                 musicList:[{}],
                 groupList:[{}],
+                rightList: {},
+                Len:"",
                 paging:{
                     currentPage:1,
                     limit:10,
@@ -185,6 +188,7 @@
                     console.log("点击的类型是"+this.radio2)
                     getSearchBook(params).then(resp =>{
                         this.bookList = resp.data.data.records
+                        this.Len = resp.data.data.total;
                         console.log(this.bookList);
                     })
                 }
@@ -193,18 +197,21 @@
                     console.log("点击的类型是"+this.radio2)
                     getSearchMovie(params).then(resp =>{
                         this.movieList = resp.data.data.records
+                        this.Len = resp.data.data.total;
                         console.log(this.movieList);
                     })
                 }
                 if (this.radio2=='音乐'){
                     getSearchMusic(params).then(resp =>{
                         this.musicList = resp.data.data.records
+                        this.Len = resp.data.data.total;
                         console.log(this.musicList);
                     })
                 }
                 if (this.radio2=='小组'){
                     getSearchGroup(params).then(resp =>{
                         this.groupList = resp.data.data.records
+                        this.Len = resp.data.data.total;
                         console.log(this.groupList);
                     })
                 }
@@ -244,7 +251,10 @@
             }
         },
         created() {
-            this.getListByType()
+            this.getListByType();
+            getRightTagInfo().then(resp => {
+                this.rightList = resp.data.data;
+            })
         }
     }
 </script>

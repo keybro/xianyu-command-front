@@ -778,7 +778,14 @@
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">类型：</p>
-                    <el-input v-model="musicType" placeholder="请选择类型" style="width: 60%"></el-input>
+                    <el-select v-model="upType" placeholder="请选择类型" style="width: 60%">
+                        <el-option
+                                v-for="item in musicTypeOption"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">曲目：</p>
@@ -798,15 +805,8 @@
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">专辑类型：</p>
-<!--                    <el-input v-model="collectionType" placeholder="请输入专辑类型" style="width: 55%"></el-input>-->
-                    <el-select v-model="upType" placeholder="请选择类型" style="width: 55%">
-                        <el-option
-                                v-for="item in musicTypeOption"
-                                :key="item.value"
-                                :label="item.label"
-                                :value="item.value">
-                        </el-option>
-                    </el-select>
+                    <el-input v-model="collectionType" placeholder="请输入专辑类型" style="width: 55%"></el-input>
+
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">发行时间：</p>

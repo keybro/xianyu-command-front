@@ -18,7 +18,6 @@
         <div class="content">
             <pageView></pageView>
         </div>
-
     </div>
 </template>
 
