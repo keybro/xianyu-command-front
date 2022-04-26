@@ -134,3 +134,16 @@ export  function  removeGroupById(id){
         method:"post",
     })
 }
+
+
+
+/**
+ * 判断当前 用户是否是小组创建者
+ * @returns {AxiosPromise}
+ */
+export  function  isGroupCreater(){
+    return request({
+        url:`group/isCreater`,
+        method:"get",
+    })
+}

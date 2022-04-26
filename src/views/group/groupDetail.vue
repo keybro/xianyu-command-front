@@ -26,7 +26,7 @@
 
                                 </div>
                                 <div class="right">
-                                    <el-button type="primary" size="small" @click="createJoinApp()">加入小组</el-button>
+                                    <el-button type="primary" size="small" @click="createJoinApp()" v-if="this.isHavaJoinFlag == true">加入小组</el-button>
                                     <div style="display: flex;margin-top: 10px;margin-bottom: 10px">
                                         <p style="margin-top: 5px">小组标签：</p>
                                         <el-tag v-for="(item) in labelArray.slice(0,labelArray.length-1)" :key="item">
@@ -110,7 +110,7 @@
 
                                 <div style="display: flex;justify-content: center;" v-for="item in recommendGroupList"
                                      :key="item">
-                                    <img :src="item.groupHead" alt="" style="width: 8vw;height: 14vh;margin-left: 5px">
+                                    <img :src="item.groupHead" alt="" style="width: 8vw;height: 14vh;margin-left: 5px" @click="toThisDetail(item.groupId)">
                                     <div style="margin-left: 2px">
                                         <p class="group-name-recommend" style="width: 5vw">{{item.groupName}}</p>
                                         <p style="margin-top: 10px">{{item.personNumber}}人</p>
@@ -135,7 +135,7 @@
                                         <el-breadcrumb-item id="behind"><a href="/">最近讨论</a></el-breadcrumb-item>
                                     </el-breadcrumb>
                                     <el-button type="primary" size="small" class="right" style="margin-top: 10px"
-                                               @click="dialogTableVisible = true">发言
+                                               @click="writeBtn()">发言
                                     </el-button>
                                     <!--                                    <p >发言</p>-->
                                 </div>
@@ -260,7 +260,7 @@
 <script>
     import {getGroupDetailById, getGroupRecommendById} from "../../api/group";
     import {getUserInfoById} from "../../api/user";
-    import {createJoinApplication} from "../../api/join";
+    import {createJoinApplication,isHaveJoin} from "../../api/join";
     import {createInvitation, pageGetInvitationByGroup} from "../../api/invitation";
 
     export default {
@@ -280,6 +280,7 @@
                 endLabelArray: [{}],
                 recommendGroupList: [{}],
                 createrName: '',
+                isHavaJoinFlag: true,
                 invitationTitle: "",
                 invitationContent: "",
                 currentGroupName: "",
@@ -296,6 +297,22 @@
             }
         },
         methods: {
+            writeBtn(){
+                if (this.isHavaJoinFlag == false){
+                    this.dialogTableVisible = true;
+                }
+                else {
+                    this.$alert('请先加入小组', '提示', {
+                        confirmButtonText: '确定',
+                    });
+                }
+            },
+            isHaveJoinGroup(){
+                let groupId = sessionStorage.getItem("groupId")
+                isHaveJoin(groupId).then(resp =>{
+                    this.isHavaJoinFlag = resp.data.data;
+                })
+            },
             showInvitationDetail(row) {
                 console.log("触发了点击表格方法")
                 console.log(row);
@@ -304,6 +321,8 @@
                 this.$router.push("/homePage/invitationDetail");
             },
             toThisDetail(id) {
+                sessionStorage.setItem("groupId",id)
+                this.isHaveJoinGroup();
                 getGroupDetailById(id).then(resp => {
                     this.groupDetailInfo = resp.data.data;
                     this.currentGroupName = resp.data.data.groupName;
@@ -317,6 +336,7 @@
                     console.log("推荐的小组")
                     console.log(this.recommendGroupList)
                 })
+                this.getInvitationList();
 
             },
             getInvitationList() {
@@ -356,6 +376,7 @@
                         message: '恭喜你成为该小组的一员！',
                         type: 'success'
                     });
+                    this.isHaveJoinGroup()
                 })
             },
             //页面改变分页每页数量
@@ -387,6 +408,7 @@
                 console.log("推荐的小组")
                 console.log(this.recommendGroupList)
             })
+            this.isHaveJoinGroup();
 
 
         }

@@ -18,9 +18,9 @@
                             <div class="head-picture" style="margin-right: 10px;display: flex">
                                 <el-avatar :size="100" :src="userHeadSrc" style="margin: 5px"></el-avatar>
                                 <div style="float: left;margin-top: 5vh">
-                                    吃葡萄不吐葡萄皮
+                                    {{userInfo.nickname}}
                                     <el-button type="primary" size="mini" @click="quitLogin()">退出登录</el-button>
-                                    <p style="width: 15vw;color: #b28b48;margin-top: 6px">小组管理员</p>
+                                    <p style="width: 15vw;color: #b28b48;margin-top: 6px" v-if="this.isGroupCreaterFlag == false">小组管理员</p>
                                 </div>
                             </div>
 
@@ -518,16 +518,17 @@
     import {pageGetMyJoinGroups, quitGroupById} from "../../api/join";
     import {modifyInvitation, pageGetMyInvitation, removeInvitationById} from "../../api/invitation";
     import {pageGetMyInvitationReply, removeReplyById, updateReply} from "../../api/invitationReply";
-    import {getGroupDetailById, removeGroupById, updateGroupInfo} from "../../api/group";
+    import {getGroupDetailById, removeGroupById, updateGroupInfo,isGroupCreater} from "../../api/group";
 
     export default {
         name: "userPersonCenter",
         data: function () {
             return {
-                userHeadSrc: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+                userHeadSrc: "http://47.99.186.220:9000/recommend/userHead.jpg?Content-Disposition=attachment%3B%20filename%3D%22userHead.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220425%2F%2Fs3%2Faws4_request&X-Amz-Date=20220425T023015Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=31d4174deb0645f8ef1453472703f242d2ba6b3c375a42185196784728d84b3c",
                 clickItem: '1',
                 resourceType: "1",
                 userInfo: {},
+                isGroupCreaterFlag: true,
                 userCommentList: [{}],
                 userJoinGroups: [{}],
                 userInvitationList: [{}],
@@ -934,6 +935,9 @@
             this.getMyJoinGroups();
             this.getMyInvitation();
             this.getMyInvitationReply()
+            isGroupCreater().then(resp =>{
+                this.isGroupCreaterFlag = resp.data.data;
+            })
         }
     }
 </script>

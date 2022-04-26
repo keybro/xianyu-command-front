@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-        <el-card shadow="always" class="box-card" style="background: #babcbe">
+        <el-card shadow="always" class="box-card" style="margin-top:5px;background-image: url('http://47.99.186.220:9000/recommend/loginBack.png?Content-Disposition=attachment%3B%20filename%3D%22loginBack.png%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220424%2F%2Fs3%2Faws4_request&X-Amz-Date=20220424T115020Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=757e3b3c45af97f4681061be7ae718ee23e6b0eec81213f16925ffb8b9899f55')">
             <div class="username-input" style="margin: 10vw">
                 <h1>登录页面</h1>
                 <el-input placeholder="用户名" style="margin: 1vh" v-model="userData.account"></el-input>
@@ -73,6 +73,7 @@
                         }, 100);
                         if (resp.data.code == 0) {
                             getCurrentUserInfo().then(resp => {
+                                sessionStorage.setItem("currentUserType",resp.data.data.type)
                                 if (resp.data.data.type == '1') {
                                     this.$store.dispatch("setUserInfo")
                                     this.$router.push("/homePage")

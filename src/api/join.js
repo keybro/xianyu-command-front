@@ -38,3 +38,17 @@ export  function  quitGroupById(id){
         method:"post",
     })
 }
+
+
+
+/**
+ * 当前用户创建进入小组的申请
+ * @param params
+ * @returns {AxiosPromise}
+ */
+export  function  isHaveJoin(id){
+    return request({
+        url:`join/isHaveJoin/${id}`,
+        method:"get",
+    })
+}

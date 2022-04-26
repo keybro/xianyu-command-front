@@ -36,7 +36,10 @@
                                             <div style="width: 30vw;margin-top: 10px">
                                                 <p class="detail-hidden">简介:{{item.bookIntroduce}}</p>
                                             </div>
-                                            <p style="margin-top: 10px">评分:{{item.score}}</p>
+
+                                        </div>
+                                        <div>
+                                            <h4 style="margin-top: 6vh;margin-left: 5px">评分:{{item.score}}</h4>
                                         </div>
                                     </div>
 
@@ -65,10 +68,11 @@
                                     <div slot="header">
                                         <div style="width: 60%;display: flex;margin-left: 10px">
                                             <el-avatar
-                                                    src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                                                    src="http://47.99.186.220:9000/recommend/userHead.jpg?Content-Disposition=attachment%3B%20filename%3D%22userHead.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220425%2F%2Fs3%2Faws4_request&X-Amz-Date=20220425T031545Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=43fb62d40eebb1d86e67c4e07180d57287665844f51ff94a16c0cf4e6ed863ae"></el-avatar>
                                             <div style="width: 40%"><p style="margin-top: 12px">用户名</p></div>
                                         </div>
                                     </div>
+
 
                                     <div style="text-align: left;margin-left: 5%">
                                         <p>我的书籍评论:{{rightList.myBookCommentNumber}}</p>

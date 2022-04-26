@@ -51,7 +51,7 @@
                                         <img :src="item.coverImg" alt=""
                                              style="width: 15%;height: 20vh; margin-left: 30px;margin-bottom: 10px"
                                              @click="goToMusicDetail(item)">
-                                        <div class="img-right-content" style="margin-top: 1vh;margin-left: 20px">
+                                        <div class="img-right-content" style="margin-top: 1vh;margin-left: 20px;width: 30vw">
                                             <h4>{{item.musicName}}</h4>
                                             <p style="margin-top: 5px">表演者：{{item.performer}}</p>
                                             <p style="margin-top: 5px">流派:{{item.genre}}</p>
@@ -59,10 +59,12 @@
                                             <p style="margin-top: 5px">歌曲类型:{{item.musicType}}</p>
                                             <p style="margin-top: 5px">发行时间:{{item.publishTime}}</p>
                                             <p style="margin-top: 5px">出版者:{{item.publishName}}</p>
-                                            <p style="margin-top: 5px">评分:{{item.musicScore}}</p>
                                             <!--                                            <div style="width: 30vw;margin-top: 10px">-->
                                             <!--                                                <p class="detail-hidden">主演:{{item.actor}}</p>-->
                                             <!--                                            </div>-->
+                                        </div>
+                                        <div>
+                                            <h4 style="margin-top: 6vh;margin-left: 5px">评分:{{item.musicScore}}</h4>
                                         </div>
                                     </div>
 
@@ -91,7 +93,7 @@
                                     <div slot="header">
                                         <div style="width: 60%;display: flex;margin-left: 10px">
                                             <el-avatar
-                                                    src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                                                    src="http://47.99.186.220:9000/recommend/userHead.jpg?Content-Disposition=attachment%3B%20filename%3D%22userHead.jpg%22&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minioadmin%2F20220425%2F%2Fs3%2Faws4_request&X-Amz-Date=20220425T031545Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=43fb62d40eebb1d86e67c4e07180d57287665844f51ff94a16c0cf4e6ed863ae"></el-avatar>
                                             <div style="width: 40%"><p style="margin-top: 12px">用户名</p></div>
                                         </div>
                                     </div>

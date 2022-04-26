@@ -627,7 +627,15 @@
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">类型：</p>
-                    <el-input v-model="upType" placeholder="请选择类型" style="width: 60%"></el-input>
+<!--                    <el-input v-model="upType" placeholder="请选择类型" style="width: 60%"></el-input>-->
+                    <el-select v-model="upType" placeholder="请选择类型" style="width: 60%">
+                        <el-option
+                                v-for="item in bookTypeOption"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">简介：</p>
@@ -704,7 +712,15 @@
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">类型：</p>
-                    <el-input v-model="movieType" placeholder="请选择类型" style="width: 60%"></el-input>
+<!--                    <el-input v-model="movieType" placeholder="请选择类型" style="width: 60%"></el-input>-->
+                    <el-select v-model="upType" placeholder="请选择类型" style="width: 60%">
+                        <el-option
+                                v-for="item in movieTypeOption"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">导演：</p>
@@ -782,7 +798,15 @@
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">专辑类型：</p>
-                    <el-input v-model="collectionType" placeholder="请输入专辑类型" style="width: 55%"></el-input>
+<!--                    <el-input v-model="collectionType" placeholder="请输入专辑类型" style="width: 55%"></el-input>-->
+                    <el-select v-model="upType" placeholder="请选择类型" style="width: 55%">
+                        <el-option
+                                v-for="item in musicTypeOption"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </div>
                 <div style="display: flex;justify-content: center;margin-top: 1vh">
                     <p style="font-size: medium;margin-top: 1vh">发行时间：</p>
@@ -838,6 +862,138 @@
         data: function () {
             return {
                 userHeadSrc: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+                bookTypeOption: [
+                    {
+                    value: '小说',
+                    label: '小说'
+                }, {
+                    value: '历史',
+                    label: '历史'
+                }, {
+                    value: '文学',
+                    label: '文学'
+                }, {
+                    value: '心理学',
+                    label: '心理学'
+                }, {
+                    value: '哲学',
+                    label: '哲学'
+                }, {
+                    value: '推理',
+                    label: '推理'
+                }, {
+                    value: '爱情',
+                    label: '爱情'
+                }, {
+                    value: '传记',
+                    label: '传记'
+                }, {
+                    value: '社会学',
+                    label: '社会学'
+                }, {
+                    value: '文化',
+                    label: '文化'
+                }, {
+                    value: '散文',
+                    label: '散文'
+                }, {
+                    value: '科普',
+                    label: '科普'
+                }, {
+                    value: '悬疑',
+                    label: '悬疑'
+                }, {
+                    value: '科幻',
+                    label: '科幻'
+                }],
+                movieTypeOption: [
+                    {
+                        value: '剧情',
+                        label: '剧情'
+                    }, {
+                        value: '动作',
+                        label: '动作'
+                    }, {
+                        value: '历史',
+                        label: '历史'
+                    }, {
+                        value: '战争',
+                        label: '战争'
+                    }, {
+                        value: '科幻',
+                        label: '科幻'
+                    }, {
+                        value: '冒险',
+                        label: '冒险'
+                    }, {
+                        value: '爱情',
+                        label: '爱情'
+                    }, {
+                        value: '喜剧',
+                        label: '喜剧'
+                    }, {
+                        value: '灾难',
+                        label: '灾难'
+                    }, {
+                        value: '犯罪',
+                        label: '犯罪'
+                    }, {
+                        value: '动画',
+                        label: '动画'
+                    }, {
+                        value: '惊悚',
+                        label: '惊悚'
+                    }, {
+                        value: '运动',
+                        label: '运动'
+                    }, {
+                        value: '悬疑',
+                        label: '悬疑'
+                    }],
+                musicTypeOption: [
+                    {
+                        value: '日本',
+                        label: '日本'
+                    }, {
+                        value: '欧美',
+                        label: '欧美'
+                    }, {
+                        value: '台湾',
+                        label: '台湾'
+                    }, {
+                        value: '华语',
+                        label: '华语'
+                    }, {
+                        value: '流行',
+                        label: '流行'
+                    }, {
+                        value: '女声',
+                        label: '女声'
+                    }, {
+                        value: '男声',
+                        label: '男声'
+                    }, {
+                        value: '英国',
+                        label: '英国'
+                    }, {
+                        value: '民谣',
+                        label: '民谣'
+                    }, {
+                        value: '香港',
+                        label: '香港'
+                    }, {
+                        value: '韩国',
+                        label: '韩国'
+                    }, {
+                        value: '纯音乐',
+                        label: '纯音乐'
+                    }, {
+                        value: '电子',
+                        label: '电子'
+                    }, {
+                        value: '经典',
+                        label: '经典'
+                    }],
                 clickItem: '1',
                 resourceType: "1",
                 userInfo: {},

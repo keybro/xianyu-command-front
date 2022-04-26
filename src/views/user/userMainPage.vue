@@ -153,7 +153,7 @@
                                         </div>
                                         <div style="float: right;margin-right: 10%;margin-top: 10%;width: 6vw">
                                             <p class="group-name">{{item.groupName}}</p>
-                                            <P style="margin-top: 2%">1989 人</P>
+                                            <P style="margin-top: 2%">{{item.personNumber}} 人</P>
                                         </div>
 
                                     </el-card>

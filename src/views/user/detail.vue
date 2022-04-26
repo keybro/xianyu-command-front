@@ -22,6 +22,7 @@
                     <p style="margin-top: 3px" v-if="judgeType()">出版社:{{bookDetail.publish}}</p>
                     <p style="margin-top: 3px" v-if="judgeType()">出品方:{{bookDetail.producer}}</p>
                     <p style="margin-top: 3px" v-if="judgeType()">译者:{{bookDetail.translateMan}}</p>
+                    <p style="margin-top: 3px" v-if="judgeType()">类型:{{bookDetail.bookType}}</p>
                     <p style="margin-top: 3px" v-if="judgeType()">出版年:{{bookDetail.publishTime}}</p>
                     <p style="margin-top: 3px" v-if="judgeType()">页数:{{bookDetail.pageNumber}}</p>
                     <p style="margin-top: 3px" v-if="judgeType()">ISBN:{{bookDetail.isbn}}</p>
