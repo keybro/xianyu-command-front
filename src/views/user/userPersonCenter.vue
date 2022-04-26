@@ -284,7 +284,7 @@
                                             :current-page="paging.currentPage"
                                             :page-size="paging.limit"
                                             layout="total,sizes,prev,pager,next"
-                                            :total="userJoinGroups.length">
+                                            :total="userJoinGroupsLength">
                                     </el-pagination>
 
                                 </div>
@@ -592,6 +592,7 @@
                     }
                 ],
                 value: [],
+                userJoinGroupsLength:"",
             }
         },
         methods: {
@@ -643,11 +644,11 @@
                     type: 'warning'
                 }).then(() => {
                     removeGroupById(id);
-                    this.getMyJoinGroups();
                     this.$message({
                         type: 'success',
                         message: '删除成功!'
                     });
+                    this.getMyJoinGroups();
                 }).catch(() => {
                     this.$message({
                         type: 'info',
@@ -903,6 +904,8 @@
                 this.$set(params, "currentPage", this.paging.currentPage)
                 pageGetMyJoinGroups(params).then(resp => {
                     this.userJoinGroups = resp.data.data.records;
+                    // this.userJoinGroups.length = resp.data.data.total;
+                    this.userJoinGroupsLength = resp.data.data.total;
                     console.log("这个是小组分页")
                     console.log(this.userJoinGroups)
                 })

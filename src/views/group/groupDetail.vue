@@ -314,11 +314,16 @@
                 })
             },
             showInvitationDetail(row) {
-                console.log("触发了点击表格方法")
-                console.log(row);
-                console.log(row.invitationId)
-                sessionStorage.setItem("invitationId", row.invitationId)
-                this.$router.push("/homePage/invitationDetail");
+                if (this.isHavaJoinFlag == false){
+                    sessionStorage.setItem("invitationId", row.invitationId)
+                    this.$router.push("/homePage/invitationDetail");
+                }
+                else {
+                    this.$alert('请先加入小组', '提示', {
+                        confirmButtonText: '确定',
+                    });
+                }
+
             },
             toThisDetail(id) {
                 sessionStorage.setItem("groupId",id)
